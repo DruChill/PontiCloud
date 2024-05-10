@@ -13,8 +13,7 @@ function App() {
 
   useEffect(() => {
     const unsubscribe = onSnapshot(collection(db, "files"), (snapshot) => {
-      setFiles(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
-        .sort((a, b) => b.timestamp.toDate() - a.timestamp.toDate()));
+      setFiles(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
     });
     return unsubscribe;
   }, []);
@@ -23,7 +22,7 @@ function App() {
     e.preventDefault();
     // Check file size
     if (file.size > 5 * 1024 * 1024) { // 5 MB
-      alert("El archivo es muy pesado y solo se admite 5MB");
+      alert("El archivo es muy pesado solo se admite 5MB");
       return;
     }
     try {
@@ -83,7 +82,7 @@ function App() {
               {files.map((file) => (
                 <div className='d-flex justify-content-center' key={file.id}>
                   <a className='text-info' href={file.url}>{file.name}</a>
-                  <p className='ms-4 text-white'>{file.timestamp.toDate().toLocaleString('es-ES', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' })}</p>
+                  {/* <p className='ms-4 text-white'>{file.timestamp.toDate().toLocaleString('es-ES', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' })}</p> */}
                 </div>
               ))}
             </div>

@@ -1,0 +1,49 @@
+import { initializeApp } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore';
+import { getStorage, ref, uploadBytes } from 'firebase/storage';
+import { v4 as uuidv4 } from 'uuid';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDJUkSnKfiRNSDiwYsRp3CxXRAzqoOBrqk",
+  authDomain: "ponticloud.firebaseapp.com",
+  projectId: "ponticloud",
+  storageBucket: "ponticloud.appspot.com",
+  messagingSenderId: "879462971456",
+  appId: "1:879462971456:web:e19736b525daaa73b047a5"
+};
+
+// Inicializar Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore();
+const storage = getStorage(app); // Obtener la instancia de Firebase Storage
+
+const uploadFile = async (file) => {
+  const uuid = uuidv4(); // Genera un nuevo UUID para cada archivo que se va a subir
+
+  let folderName = '';
+  if (file.type.includes('pdf')) {
+    folderName = 'pdf';
+  } else if (file.type.includes('word')) {
+    folderName = 'word';
+  } else if (file.type.includes('image')) {
+    folderName = 'images';
+  } else {
+    // Define una carpeta por defecto o maneja el error
+    folderName = 'others'; // Por ejemplo, una carpeta para otros tipos de archivos
+  }
+
+  // Crea una referencia al lugar donde quieres guardar el archivo en Firebase Storage
+  const fileRef = ref(storage, `${folderName}/${uuid}`);
+
+  try {
+    // Sube el archivo a Firebase Storage
+    const uploadResult = await uploadBytes(fileRef, file);
+    console.log('Archivo subido con éxito:', uploadResult);
+    // Aquí puedes retornar la URL del archivo o cualquier otra información relevante
+  } catch (error) {
+    console.error('Error al subir el archivo:', error);
+    // Maneja el error adecuadamente
+  }
+};
+
+export { db, uploadFile };

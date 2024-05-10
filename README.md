@@ -1,4 +1,4 @@
-    <div align="center">
+<div align="center">
 
 <a href="http://ponticloud.web.app/">
   <img width="300px" src="https://github.com/DruChill/PontiCloud/blob/main/public/icon_logo_ligth_mode.png?raw=true" alt="Logo" width="800" />
