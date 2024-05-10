@@ -25,3 +25,4 @@ dist-ssr
 
 # DataBase FireBase is not now visible
 /src/firebase.js
+/index.html
