@@ -8,18 +8,31 @@
 }
 
 
+table {
+  /* width: 100%; */
+  width: 50%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px;
+  border: 1px solid #0dcaf0
+}
+
+th {
+  text-align: left;
+}
+
+td {
+  text-align: start;
+}
+
+
 .list-unstyled li a {
   color: rgba(var(--bs-info-rgb),var(--bs-text-opacity))!important;
   text-decoration: none;
 }
 
-
-
-.footer {
-position: fixed;
-width: 90%;
-bottom: 0;
-}
 
 @media (min-width: 768px) {
   .bd-placeholder-img-lg {
@@ -33,6 +46,10 @@ bottom: 0;
 @media (max-width: 767.98px) {
   .text-header {
     display: none;
+  }
+
+  table {
+    width: 100%;
   }
 }
 
