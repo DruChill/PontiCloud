@@ -6,6 +6,7 @@ import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 import './App.css';
 import Footer from './assets/Components/Footer';
+import Alert from './assets/Components/Alert';
 
 function App() {
 
@@ -75,11 +76,12 @@ function App() {
   return (
     <div>
       <div className='container py-2'>
+        <Alert />
         {/* <span>Visitas: {visitCounter}</span> */}
         <Header />
         <main className='text-center'>
           <div>
-            <h1 className='fs-1'>PontiCloud</h1>
+            <h1 className='fs-1 mt-3'>PontiCloud</h1>
             <p>Este proyecto está bajo investigación y desarrollo. Habrá fallas aquí y allá, pero en general es fluido. <br />
             Recuerda solo subir material de trabajo, como archivos Pdf, Rar, Word, Excel etc..
             </p>
