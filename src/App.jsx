@@ -75,7 +75,7 @@ function App() {
   return (
     <div>
       <div className='container py-2'>
-        <span>Visitas: {visitCounter}</span>
+        {/* <span>Visitas: {visitCounter}</span> */}
         <Header />
         <main className='text-center'>
           <div>
@@ -131,7 +131,9 @@ function App() {
               <tbody>
                 {files.map((file) => (
                   <tr key={file.id}>
-                    <td>{file.name}</td>
+                    <td>
+                      <a href= {file.url} >{file.name}</a>
+                    </td>
                     <td>{new Date(file.uploadedAt.seconds * 1000).toLocaleString()}</td>
                   </tr>
                 ))}
