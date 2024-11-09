@@ -16,6 +16,7 @@ const storage = getStorage(app); // Obtener la instancia de Firebase Storage
 
 const uploadFile = async (file) => {
   const uuid = uuidv4(); // Genera un nuevo UUID para cada archivo que se va a subir
+  const extension = file.name.split('.').pop(); // Obtiene la extensión del archivo
 
   let folderName = '';
   if (file.type.includes('pdf')) {
@@ -30,7 +31,7 @@ const uploadFile = async (file) => {
   }
 
   // Crea una referencia al lugar donde quieres guardar el archivo en Firebase Storage
-  const fileRef = ref(storage, `${folderName}/${uuid}`);
+  const fileRef = ref(storage, `${folderName}/${uuid}.${extension}`);
 
   try {
     // Sube el archivo a Firebase Storage
