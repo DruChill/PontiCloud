@@ -88,25 +88,31 @@ function App() {
           </div>
           <div className='my-4'>
             <form onSubmit={handleSubmit}>
-              <div
+            <div
                 onDrop={handleDrop}
                 onDragOver={handleDragOver}
                 className='drop-zone'
-                style={{ border: '2px dashed #ccc', padding: '20px', borderRadius: '10px' }}
+                
               >
-                <p>Arrastra y suelta tu archivo aquí, o haz clic para seleccionarlo.</p>
-                <input
-                  className='btn btn-outline-secondary'
-                  style={{ display: 'none' }} 
-                  type="file" 
-                  id="fileUpload" 
-                  onChange={(e) => {
-                    setFile(e.target.files[0]);
-                    setSelectedFileName(e.target.files[0]?.name);
-                  }} 
-                />
-                <label htmlFor="fileUpload" className='me-2 btn btn-outline-info'>
-                  Selecionar archivo
+                <label htmlFor="fileUpload" style={{ display: 'block', width: '100%', height: '100%' }}>
+                  <img src="/adminBanner.png" alt="" />
+                  <p>
+                    Arrastra y suelta tu archivo aquí, o haz clic para seleccionarlo, tu archivo no debe pesar más de 5MB.
+
+                    {/* <span className='ms-1 text-info'>
+                    {selectedFileName ? `${selectedFileName}` : ''} 
+                    </span> */}
+                  </p>
+                  <input
+                    className='btn btn-outline-secondary'
+                    style={{ display: 'none' }} 
+                    type="file" 
+                    id="fileUpload" 
+                    onChange={(e) => {
+                      setFile(e.target.files[0]);
+                      setSelectedFileName(e.target.files[0]?.name);
+                    }} 
+                  />
                 </label>
               </div>
               <button
@@ -116,9 +122,9 @@ function App() {
               >
                 Subir Archivo
               </button>
-              
+
               <p className='mt-3'>
-                {selectedFileName ? ` Archivo seleccionado: ${selectedFileName}` : 'Tu archivo aparecerá aquí abajo una vez terminado el proceso de carga.'}
+                {selectedFileName ? <span>Archivo seleccionado: <span className="text-info">{selectedFileName}</span></span> : 'Tu archivo aparecerá aquí abajo una vez terminado el proceso de carga.'}
               </p>
             </form>
           </div>
