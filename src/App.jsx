@@ -7,6 +7,7 @@ import 'nprogress/nprogress.css';
 import './App.css';
 import Footer from './assets/Components/Footer';
 import Alert from './assets/Components/Alert';
+import Toast from './assets/Components/Toast';
 
 function App() {
 
@@ -76,9 +77,10 @@ function App() {
   return (
     <div>
       <div className='container py-2'>
-        <Alert />
+        {/* <Alert /> */}
         {/* <span>Visitas: {visitCounter}</span> */}
         <Header />
+        <Toast />
         <main className='text-center'>
           <div>
             <h1 className='fs-1 mt-3'>PontiCloud</h1>
