@@ -32,6 +32,9 @@ function Header() {
                         Contacto
                     </a>
                 </li>
+                {/* <li>
+                    <a href="/sobrenosotros">Mas info</a>
+                </li> */}
             </ul>
         </nav>
   </header>
