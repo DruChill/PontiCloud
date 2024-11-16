@@ -1,20 +1,12 @@
 # Security Policy
+PontiCloud durante todo este tiempo a estado mejorando y siendo más seguro para todo los estudiantes!
 
 ## Supported Versions
-
-Asegurate de no subir información personal a PontiCloud
-
-| Version | Supported          |
-| ------- | ------------------ |
-| 5.1.x   | :white_check_mark: |
-| 5.0.x   | :x:                |
-| 4.0.x   | :white_check_mark: |
-| < 4.0   | :x:                |
+Actualemente verión 0.16, para ver más información sobre las nuevas novedades que trae PontiCloud puede visitar <a href="https://github.com/DruChill/PontiCloud/releases">Release.</a>
 
 ## Reporting a Vulnerability
+Notaste algo extraño en PontiCloud o algo que mejorar click <a href="https://github.com/DruChill/PontiCloud/issues">Aquí</a>
+ para reportarlo y solucionarlo lo más rápido posible.
 
-Use this section to tell people how to report a vulnerability.
-
-Tell them where to go, how often they can expect to get an update on a
-reported vulnerability, what to expect if the vulnerability is accepted or
-declined, etc.
+> [!WARNING]
+> Asegurate de no subir información personal a PontiCloud.
