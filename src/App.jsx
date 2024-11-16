@@ -83,7 +83,7 @@ function App() {
         <Toast />
         <main className='text-center'>
           <div>
-            <h1 className='fs-1 mt-3'>PontiCloud</h1>
+            <h1 className='fs-1 my-3'>PontiCloud</h1>
             <p>Este proyecto está bajo investigación y desarrollo. Habrá fallas aquí y allá, pero en general es fluido. <br />
             Recuerda solo subir material de trabajo, como archivos Pdf, Rar, Word, Excel etc..
             </p>
@@ -99,11 +99,7 @@ function App() {
                 <label htmlFor="fileUpload" style={{ display: 'block', width: '100%', height: '100%' }}>
                   <img src="/adminBanner.png" alt="" />
                   <p>
-                    Arrastra y suelta tu archivo aquí, o haz clic para seleccionarlo, tu archivo no debe pesar más de 5MB.
-
-                    {/* <span className='ms-1 text-info'>
-                    {selectedFileName ? `${selectedFileName}` : ''} 
-                    </span> */}
+                    Arrastra y suelta tu archivo aquí, tu archivo no debe pesar más de 5MB.
                   </p>
                   <input
                     className='btn btn-outline-secondary'
@@ -142,7 +138,7 @@ function App() {
                 {files.map((file) => (
                   <tr key={file.id}>
                     <td>
-                      <a href= {file.url} >{file.name}</a>
+                      <a className='text-decoration-none' href= {file.url} >{file.name}</a>
                     </td>
                     <td>{new Date(file.uploadedAt.seconds * 1000).toLocaleString()}</td>
                   </tr>
