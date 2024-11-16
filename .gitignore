@@ -1,10 +1,7 @@
 node_modules
 /dist
 
-/src/firebase.js
-
-src/firebase.js
-
 .env
 
-echo ".env" >> .gitignore
+# Ingresa eso en la terminal y se sobre escribe el archivo .gitignore agregando .env
+# echo ".env" >> .gitignore
