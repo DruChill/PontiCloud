@@ -97,7 +97,7 @@ function App() {
                 
               >
                 <label htmlFor="fileUpload" style={{ display: 'block', width: '100%', height: '100%' }}>
-                  <img src="/adminBanner.png" alt="" />
+                  <img src="/adminBanner.png" alt="icon-drop" style={{pointerEvents: 'none', userSelect: 'none'}} />
                   <p>
                     Arrastra y suelta tu archivo aquí, tu archivo no debe pesar más de 5MB.
                   </p>
@@ -130,7 +130,7 @@ function App() {
             <table>
               <thead>
                 <tr className='text-info'>
-                  <th>Nombre</th>
+                  <th>Nombre del archivo</th>
                   <th>Fecha y hora</th>  
                 </tr>
               </thead>
