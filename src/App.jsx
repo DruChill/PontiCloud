@@ -83,7 +83,7 @@ function App() {
         <Toast />
         <main className='text-center'>
           <div>
-            <h1 className='fs-1 my-3'>PontiCloud</h1>
+            <h1 className='fs-1 my-3'>Ponti<span className='text-info' >Cloud</span></h1>
             <p>Este proyecto está bajo investigación y desarrollo. Habrá fallas aquí y allá, pero en general es fluido. <br />
             Recuerda solo subir material de trabajo, como archivos Pdf, Rar, Word, Excel etc..
             </p>
