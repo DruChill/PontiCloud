@@ -49,6 +49,10 @@ td {
   text-align: start;
 }
 
+tr td a:hover{
+  color: #0dcaf0;
+}
+
 .list-unstyled li a {
   color: rgba(var(--bs-info-rgb),var(--bs-text-opacity))!important;
   text-decoration: none;

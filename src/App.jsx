@@ -132,27 +132,27 @@ function App() {
             <table>
               <thead>
                 <tr className='text-info'>
-                  <th>Nombre del archivo</th>
-                  <th>Tamaño del archivo</th>
-                  <th>Fecha</th>
+                  <th><i class="bi bi-file-earmark"></i> Nombre del archivo</th>
+                  <th><i className="bi bi-hdd"></i> Tamaño del archivo</th>
+                  <th><i class="bi bi-clock-history"></i> Fecha</th>
                 </tr>
               </thead>
               <tbody>
         {loading ? (
           <tr>
-            <td colSpan="2">¡Estamos buscando tu archivo, espera un toque nomás!</td>
+            <td colSpan="3">¡Estamos buscando tu archivo, espera un toque nomás!</td>
           </tr>
         ) : (
           files.map((file) => (
             <tr key={file.id}>
               <td>
-                <a className='text-decoration-none' href={file.url}>{file.name}</a>
+                <i class="bi bi-file-earmark"></i> <a className='text-decoration-none' href={file.url}>{file.name}</a>
               </td>
               <td>
-                {(file.size / 1048576).toFixed(2)} MB
+                <i className="bi bi-hdd"></i> {(file.size / 1048576).toFixed(2)} MB
               </td>
               <td>
-                {file.uploadedAt.toDate().toLocaleDateString()}
+                <i class="bi bi-clock-history"></i> {file.uploadedAt.toDate().toLocaleDateString()}
               </td>
             </tr>
           ))
