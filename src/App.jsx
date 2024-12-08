@@ -133,7 +133,8 @@ function App() {
               <thead>
                 <tr className='text-info'>
                   <th>Nombre del archivo</th>
-                  <th>Tamaño</th>  
+                  <th>Tamaño del archivo</th>
+                  <th>Fecha</th>
                 </tr>
               </thead>
               <tbody>
@@ -149,6 +150,9 @@ function App() {
               </td>
               <td>
                 {(file.size / 1048576).toFixed(2)} MB
+              </td>
+              <td>
+                {file.uploadedAt.toDate().toLocaleDateString()}
               </td>
             </tr>
           ))
