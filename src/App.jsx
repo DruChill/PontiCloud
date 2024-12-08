@@ -15,6 +15,7 @@ function App() {
   const [files, setFiles] = useState([]);
   const [selectedFileName, setSelectedFileName] = useState(null);
   const [visitCounter, setVisitCounter] = useState(0);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
 
@@ -22,6 +23,7 @@ function App() {
       query(collection(db, "files"), orderBy("uploadedAt", "desc")), // Ordena los documentos por `uploadedAt` de forma descendente
       (snapshot) => {
         setFiles(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+        setLoading(false);
       }
     );
 
@@ -131,19 +133,27 @@ function App() {
               <thead>
                 <tr className='text-info'>
                   <th>Nombre del archivo</th>
-                  <th>Fecha y hora</th>  
+                  <th>Tamaño</th>  
                 </tr>
               </thead>
               <tbody>
-                {files.map((file) => (
-                  <tr key={file.id}>
-                    <td>
-                      <a className='text-decoration-none' href= {file.url} >{file.name}</a>
-                    </td>
-                    <td>{new Date(file.uploadedAt.seconds * 1000).toLocaleString()}</td>
-                  </tr>
-                ))}
-              </tbody>
+        {loading ? (
+          <tr>
+            <td colSpan="2">¡Estamos buscando tu archivo, espera un toque nomás!</td>
+          </tr>
+        ) : (
+          files.map((file) => (
+            <tr key={file.id}>
+              <td>
+                <a className='text-decoration-none' href={file.url}>{file.name}</a>
+              </td>
+              <td>
+                {(file.size / 1048576).toFixed(2)} MB
+              </td>
+            </tr>
+          ))
+        )}
+      </tbody>
             </table>
           </div>
         </main>
