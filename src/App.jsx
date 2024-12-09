@@ -14,11 +14,9 @@ function App() {
   const [file, setFile] = useState(null);
   const [files, setFiles] = useState([]);
   const [selectedFileName, setSelectedFileName] = useState(null);
-  const [visitCounter, setVisitCounter] = useState(0);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-
     const unsubscribe = onSnapshot(
       query(collection(db, "files"), orderBy("uploadedAt", "desc")), // Ordena los documentos por `uploadedAt` de forma descendente
       (snapshot) => {
@@ -26,24 +24,6 @@ function App() {
         setLoading(false);
       }
     );
-
-    const incrementVisitCounter = async () => {
-      const visitCounterRef = doc(db, 'config', 'visitCounter');
-    
-      // Incrementar el contador en 1
-      await updateDoc(visitCounterRef, {
-        count: increment(1)
-      });
-      // Obtener el valor actualizado
-      const visitCounterSnap = await getDoc(visitCounterRef);
-      if (visitCounterSnap.exists()) {
-        setVisitCounter(visitCounterSnap.data().count); // Actualiza el estado con el valor del contador
-      }
-    };
-
-    // Llamar a la función cuando se visite la página
-    incrementVisitCounter();
-    
     return unsubscribe;
   }, []);
 
@@ -80,14 +60,13 @@ function App() {
     <div>
       <div className='container py-2'>
         {/* <Alert /> */}
-        {/* <span>Visitas: {visitCounter}</span> */}
         <Header />
         <Toast />
         <main className='text-center'>
-          <div>
+          <div className='hero'>
             <h1 className='fs-1 my-3'>Ponti<span className='text-info' >Cloud</span></h1>
-            <p>Este proyecto está bajo investigación y desarrollo. Habrá fallas aquí y allá, pero en general es fluido. <br />
-            Recuerda solo subir material de trabajo, como archivos Pdf, Rar, Word, Excel etc..
+            <p>Este proyecto está bajo investigación y desarrollo activo. Habrá fallas aquí y allá, pero en general funciona sin problemas.
+            Recuerda solo subir material de trabajo, como archivos Pdf, Word, Excel etc..
             </p>
           </div>
           <div className='my-4'>
@@ -120,7 +99,7 @@ function App() {
                 type="submit"
                 disabled={!selectedFileName} // Deshabilita el botón si no se ha seleccionado un archivo
               >
-                Subir Archivo
+                Subir Archivo <i className="bi bi-cloud-upload"></i>
               </button>
 
               <p className='mt-3'>
@@ -132,32 +111,32 @@ function App() {
             <table>
               <thead>
                 <tr className='text-info'>
-                  <th><i className="bi bi-file-earmark"></i> Nombre del archivo</th>
+                  <th><i className="bi bi-translate"></i> Nombre del archivo</th>
                   <th><i className="bi bi-hdd"></i> Tamaño del archivo</th>
-                  <th><i className="bi bi-clock-history"></i> Fecha</th>
+                  <th><i className="bi bi-calendar-week"></i> Fecha</th>
                 </tr>
               </thead>
               <tbody>
-        {loading ? (
-          <tr>
-            <td colSpan="3">¡Estamos buscando tu archivo, espera un toque nomás!</td>
-          </tr>
-        ) : (
-          files.map((file) => (
-            <tr key={file.id}>
-              <td>
-                <i className="bi bi-file-earmark"></i> <a className='text-decoration-none' href={file.url}>{file.name}</a>
-              </td>
-              <td>
-                <i className="bi bi-hdd"></i> {(file.size / 1048576).toFixed(2)} MB
-              </td>
-              <td>
-                <i className="bi bi-clock-history"></i> {file.uploadedAt.toDate().toLocaleDateString()}
-              </td>
-            </tr>
-          ))
-        )}
-      </tbody>
+                {loading ? (
+                  <tr>
+                    <td colSpan="3">¡Estamos buscando tu archivo, espera un ratito más por favor...!</td>
+                  </tr>
+                ) : (
+                  files.map((file) => (
+                    <tr key={file.id}>
+                      <td>
+                        <i className="bi bi-file-earmark-arrow-down"></i> <a className='text-decoration-none' href={file.url}>{file.name}</a>
+                      </td>
+                      <td>
+                        <i className="bi bi-hdd"></i> {(file.size / 1048576).toFixed(2)} MB
+                      </td>
+                      <td>
+                        <i className="bi bi-calendar-week"></i> {file.uploadedAt.toDate().toLocaleDateString()}
+                      </td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
             </table>
           </div>
         </main>
