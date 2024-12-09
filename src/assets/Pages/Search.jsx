@@ -15,7 +15,9 @@ function Search() {
 
   return (
     <>
-      <div>Aqui puedes filtrar tus archivos subidos con tu correo</div>
+      <div>Aqui puedes filtrar tus archivos subidos con tu correo
+        <a href="/">Regresar</a>
+      </div>
       <input
         type="text"
         placeholder="Ingresa tu correo"

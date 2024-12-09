@@ -119,27 +119,29 @@ function App() {
                   <th><i className="bi bi-clock-history"></i> Fecha</th>
                 </tr>
               </thead>
-              <tbody>
-        {loading ? (
-          <tr>
-            <td colSpan="3">¡Estamos buscando tu archivo, espera un toque nomás!</td>
-          </tr>
-        ) : (
-          files.map((file) => (
-            <tr key={file.id}>
-              <td>
-                <i className="bi bi-file-earmark"></i> <a className='text-decoration-none' href={file.url}>{file.name}</a>
-              </td>
-              <td>
-                <i className="bi bi-hdd"></i> {(file.size / 1048576).toFixed(2)} MB
-              </td>
-              <td>
-                <i className="bi bi-clock-history"></i> {file.uploadedAt.toDate().toLocaleDateString()}
-              </td>
-            </tr>
-          ))
-        )}
-      </tbody>
+<tbody>
+  {loading ? (
+    <tr>
+      <td colSpan="3">¡Estamos buscando tu archivo, espera un toque nomás!</td>
+    </tr>
+  ) : (
+    files
+      .filter(file => !file.userEmail) // Filtra los archivos que no tienen correo electrónico
+      .map((file) => (
+        <tr key={file.id}>
+          <td>
+            <i className="bi bi-file-earmark"></i> <a className='text-decoration-none' href={file.url}>{file.name}</a>
+          </td>
+          <td>
+            <i className="bi bi-hdd"></i> {(file.size / 1048576).toFixed(2)} MB
+          </td>
+          <td>
+            <i className="bi bi-clock-history"></i> {file.uploadedAt.toDate().toLocaleDateString()}
+          </td>
+        </tr>
+      ))
+  )}
+</tbody>
             </table>
           </div>
         </main>
