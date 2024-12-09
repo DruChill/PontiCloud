@@ -12,17 +12,17 @@ function Header() {
             <ul className='d-flex list-unstyled mb-0 gap-3 fs-4'>
                 <li>
                     <a href="https://github.com/DruChill/PontiCloud/releases">
-                        <i class="bi bi-github"></i>
+                        <i className="bi bi-github"></i>
                     </a>
                 </li>
                 <li>
                     <a href="/yape.JPG" className='link-opacity-50-hover'>
-                        <i class="bi bi-balloon-heart"></i>
+                        <i className="bi bi-balloon-heart"></i>
                     </a>
                 </li>
                 <li>
                     <a href="mailto:andruvrr@gmail.com">
-                        <i class="bi bi-envelope-heart-fill"></i>
+                        <i className="bi bi-envelope-heart-fill"></i>
                     </a>
                 </li>
                 {/* <li>
