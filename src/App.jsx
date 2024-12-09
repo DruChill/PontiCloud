@@ -1,21 +1,18 @@
 import { useEffect, useState } from 'react';
 import { onSnapshot, collection, query, orderBy, doc, updateDoc, increment, getDoc } from "firebase/firestore";
 import { db, uploadFile } from './firebase';
-import Header from './assets/Components/Header';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 import './App.css';
-import Footer from './assets/Components/Footer';
-import Alert from './assets/Components/Alert';
-import Toast from './assets/Components/Toast';
+
 
 function App() {
 
   const [file, setFile] = useState(null);
   const [files, setFiles] = useState([]);
   const [selectedFileName, setSelectedFileName] = useState(null);
-  const [visitCounter, setVisitCounter] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [userEmail, setUserEmail] = useState('');
 
   useEffect(() => {
 
@@ -26,23 +23,6 @@ function App() {
         setLoading(false);
       }
     );
-
-    const incrementVisitCounter = async () => {
-      const visitCounterRef = doc(db, 'config', 'visitCounter');
-    
-      // Incrementar el contador en 1
-      await updateDoc(visitCounterRef, {
-        count: increment(1)
-      });
-      // Obtener el valor actualizado
-      const visitCounterSnap = await getDoc(visitCounterRef);
-      if (visitCounterSnap.exists()) {
-        setVisitCounter(visitCounterSnap.data().count); // Actualiza el estado con el valor del contador
-      }
-    };
-
-    // Llamar a la función cuando se visite la página
-    incrementVisitCounter();
     
     return unsubscribe;
   }, []);
@@ -65,6 +45,11 @@ function App() {
       alert("El archivo es muy pesado solo se admite 5MB");
       return;
     }
+
+    if (file) {
+      await uploadFile(file, userEmail);
+    }
+
     try {
       NProgress.start(); // Inicia la barra de progreso
       await uploadFile(file);
@@ -79,17 +64,8 @@ function App() {
   return (
     <div>
       <div className='container py-2'>
-        {/* <Alert /> */}
-        {/* <span>Visitas: {visitCounter}</span> */}
-        <Header />
-        <Toast />
         <main className='text-center'>
-          <div>
-            <h1 className='fs-1 my-3'>Ponti<span className='text-info' >Cloud</span></h1>
-            <p>Este proyecto está bajo investigación y desarrollo. Habrá fallas aquí y allá, pero en general es fluido. <br />
-            Recuerda solo subir material de trabajo, como archivos Pdf, Rar, Word, Excel etc..
-            </p>
-          </div>
+          <a href="/search">Filtrar POR CORREO</a>
           <div className='my-4'>
             <form onSubmit={handleSubmit}>
             <div
@@ -115,6 +91,12 @@ function App() {
                   />
                 </label>
               </div>
+              <input
+                type="email"
+                placeholder="Ingresa tu correo"
+                value={userEmail}
+                onChange={(e) => setUserEmail(e.target.value)}
+              />
               <button
                 className={`mt-2 btn btn-info ${!selectedFileName ? 'opacity-50' : ''}`}
                 type="submit"
@@ -161,7 +143,6 @@ function App() {
             </table>
           </div>
         </main>
-        <Footer />
       </div>
     </div>
   );
