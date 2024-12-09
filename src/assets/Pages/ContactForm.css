@@ -1,0 +1,31 @@
+/* .container {
+  border: #fff solid;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 380px;
+  border-radius: .5rem;
+  padding: 1rem;
+  margin-top: 3rem;
+}
+
+form {
+  justify-content: center;
+  flex-direction: column;
+  input {
+    margin: 1rem 0;
+    padding: .5rem;
+    border-radius: .5rem;
+    border: none;
+    background: #fff;
+    color: #000;
+  }
+  textarea {
+    margin: 1rem 0;
+    padding: .5rem;
+    border-radius: .5rem;
+    border: none;
+    background: #fff;
+    color: #000;
+  }
+} */
