@@ -11,17 +11,17 @@ function Header() {
         <nav className='text-info'>
             <ul className='d-flex list-unstyled mb-0 gap-3 fs-4'>
                 <li>
-                    <a href="https://github.com/DruChill/PontiCloud/releases">
+                    <a href="https://github.com/DruChill/PontiCloud/releases" target='blank'>
                         <i className="bi bi-github"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="/yape.JPG" className='link-opacity-50-hover'>
+                    <a href="/yape.JPG" className='link-opacity-50-hover' target='blank'>
                         <i className="bi bi-balloon-heart"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="mailto:andruvrr@gmail.com">
+                    <a href="/contact" target='blank'>
                         <i className="bi bi-envelope-heart-fill"></i>
                     </a>
                 </li>
