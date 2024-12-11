@@ -117,12 +117,14 @@ function App() {
                 </tr>
               </thead>
               <tbody>
-                {loading ? (
-                  <tr>
-                    <td colSpan="3">¡Estamos buscando tu archivo, espera un ratito más por favor...!</td>
-                  </tr>
-                ) : (
-                  files.map((file) => (
+              {loading ? (
+                <tr>
+                  <td colSpan="3">¡Estamos buscando tu archivo, espera un toque nomás!</td>
+                </tr>
+              ) : (
+                files
+                  .filter(file => !file.userEmail) // Filtra los archivos que no tienen correo electrónico
+                  .map((file) => (
                     <tr key={file.id}>
                       <td>
                         <i className="bi bi-file-earmark-arrow-down"></i> <a className='text-decoration-none' href={file.url}>{file.name}</a>
