@@ -10,11 +10,11 @@ import Alert from './assets/Components/Alert';
 import Toast from './assets/Components/Toast';
 
 function App() {
-
-  const [file, setFile] = useState(null);
   const [files, setFiles] = useState([]);
   const [selectedFileName, setSelectedFileName] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [dragging, setDragging] = useState(false);
+  const [file, setFile] = useState(null);
 
   useEffect(() => {
     const unsubscribe = onSnapshot(
@@ -27,16 +27,27 @@ function App() {
     return unsubscribe;
   }, []);
 
-  const handleDrop = (e) => {
-    e.preventDefault();
-    const droppedFile = e.dataTransfer.files[0];
-    setFile(droppedFile);
-    setSelectedFileName(droppedFile.name);
-  };
 
   const handleDragOver = (e) => {
     e.preventDefault();
+    setDragging(true);
   };
+
+  const handleDragLeave = () => {
+    setDragging(false);
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    setDragging(false);
+    const droppedFile = e.dataTransfer.files[0];
+    if (droppedFile) {
+      setFile(droppedFile);
+      setSelectedFileName(droppedFile.name);
+    }
+  };
+
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -57,7 +68,37 @@ function App() {
   };
 
   return (
-    <div>
+    <div
+      onDragOver={handleDragOver}
+      onDragLeave={handleDragLeave}
+      onDrop={handleDrop}
+      style={{
+        position: 'relative',
+        width: '100%',
+        height: '100vh',
+        backgroundColor: dragging ? '#000' : 'transparent',
+        transition: 'background-color 0.3s',
+      }}
+    >
+
+      {dragging && (
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          color: 'white',
+          fontSize: '24px',
+          pointerEvents: 'none',
+        }}>
+          Suelta el archivo aquí
+        </div>
+      )}
+
       <div className='container py-2'>
         {/* <Alert /> */}
         <Header />
@@ -71,29 +112,13 @@ function App() {
           </div>
           <div className='my-4'>
             <form onSubmit={handleSubmit}>
-            <div
-                onDrop={handleDrop}
-                onDragOver={handleDragOver}
-                className='drop-zone'
-                
+              <button
+                type="button"
+                className="mt-2 me-2 btn btn-outline-info"
+                onClick={() => document.getElementById('fileUpload').click()}
               >
-                <label htmlFor="fileUpload" style={{ display: 'block', width: '100%', height: '100%' }}>
-                  <img src="/adminBanner.png" alt="icon-drop" style={{pointerEvents: 'none', userSelect: 'none'}} />
-                  <p>
-                    Arrastra y suelta tu archivo aquí, tu archivo no debe pesar más de 5MB.
-                  </p>
-                  <input
-                    className='btn btn-outline-secondary'
-                    style={{ display: 'none' }} 
-                    type="file" 
-                    id="fileUpload" 
-                    onChange={(e) => {
-                      setFile(e.target.files[0]);
-                      setSelectedFileName(e.target.files[0]?.name);
-                    }} 
-                  />
-                </label>
-              </div>
+                Seleccionar Archivo o arrastrar
+              </button>
               <button
                 className={`mt-2 btn btn-info ${!selectedFileName ? 'opacity-50' : ''}`}
                 type="submit"
