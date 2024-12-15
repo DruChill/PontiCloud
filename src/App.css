@@ -51,6 +51,13 @@ nav ul li a.Active::after {
   background: var(--color);
 }
 
+.badge {
+  background: var(--primary);
+  color: var(--color);
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+}
+
 header img {
   width: 100px;
 }
@@ -73,7 +80,6 @@ main p {
   color: var(--paragraph);
   text-align: justify;
   /* paragraph */
-  font-family: Poppins;
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
