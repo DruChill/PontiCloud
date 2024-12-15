@@ -65,6 +65,7 @@ main {
 
 main h1 {
   font-size: 3.5rem;
+  margin: 0;
 }
 
 main p {
@@ -132,6 +133,9 @@ th, td {
 td a {
   color: var(--primary);
   text-decoration: none;
+}
+td a:hover {
+  text-decoration: underline;
 }
 
 th {

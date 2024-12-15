@@ -71,7 +71,7 @@ const App = () => {
 
             <div className='upload'>
             <label htmlFor="fileUpload" className="btn">
-              Selecciona un archivo
+              Selecciona un archivo <i class="bi bi-collection"></i>
               <input
                 id="fileUpload"
                 type="file"
@@ -92,7 +92,7 @@ const App = () => {
               </button>
             </div>
             <p className='mt-3'>
-              {selectedFileName ? <span>Archivo seleccionado: <span className="text-info">{selectedFileName}</span></span> : 'Tu archivo aparecerá aquí abajo una vez terminado el proceso de carga.'}
+              {selectedFileName ? <span>Archivo seleccionado: <span className="text-info">{selectedFileName}</span></span> : 'Tu archivo aparecerá en la tabla una vez terminado el proceso de carga.'}
             </p>
           </form>
         </div>
