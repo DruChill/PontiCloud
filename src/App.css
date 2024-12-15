@@ -139,6 +139,26 @@ main p {
   background-color: #4538a6;
 }
 
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.pagination button {
+  margin: 0 0.25rem;
+  padding: 0.5rem 1rem;
+  background-color: #6246EA;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pagination button:hover {
+  background-color: #4538a6;
+}
+
 footer {
   display: flex;
   justify-content: space-between;
