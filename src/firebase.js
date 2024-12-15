@@ -20,11 +20,11 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const storage = getStorage(app); // Obtener la instancia de Firebase Storage
 
-const uploadFile = async (file) => {
+const uploadFile = async (file, userEmail) => {
   const uuid = uuidv4(); // Genera un nuevo UUID para cada archivo que se va a subir
   const extension = file.name.split('.').pop(); // Obtiene la extensión del archivo
+  let folderName = userEmail ? userEmail : 'public'; // Define una carpeta por defecto o maneja el error
 
-  let folderName = '';
   if (file.type.includes('pdf')) {
     folderName = 'pdf';
   } else if (file.type.includes('word')) {
@@ -52,7 +52,8 @@ const uploadFile = async (file) => {
       size: file.size,
       folder: folderName,
       url: fileURL,
-      uploadedAt: new Date() // Fecha de subida
+      uploadedAt: new Date(), // Fecha de subida
+      userEmail: userEmail, // Opcional: Guarda el email del usuario que subió el archivo
     };
 
     // Añade el documento a una colección llamada 'files'
