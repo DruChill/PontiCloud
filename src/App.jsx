@@ -13,6 +13,7 @@ const App = () => {
   const [selectedFileName, setSelectedFileName] = useState('');
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
+  const [userEmail, setUserEmail] = useState('');
   const rowsPerPage = 10;
 
   useEffect(() => {
@@ -43,22 +44,24 @@ const App = () => {
     setSelectedFileName(selectedFile.name);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (file.size > 5 * 1024 * 1024) {
-      alert("El archivo es muy pesado solo se admite 5MB");
-      return;
-    }
-    try {
-      NProgress.start();
-      await uploadFile(file);
-      NProgress.done();
-      setSelectedFileName(null);
-    } catch (error) {
-      NProgress.done();
-      console.log(error);
-    }
-  };
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  // Check file size
+  if (file.size > 5 * 1024 * 1024) { // 5 MB
+    alert("El archivo es muy pesado solo se admite 5MB");
+    return;
+  }
+
+  try {
+    NProgress.start(); // Inicia la barra de progreso
+    await uploadFile(file, userEmail);
+    NProgress.done(); // Finaliza la barra de progreso
+    setSelectedFileName(null);
+  } catch (error) {
+    NProgress.done(); // Finaliza la barra de progreso en caso de error
+    alert(error.message); // Muestra el mensaje de error
+  }
+};
 
   const indexOfLastRow = currentPage * rowsPerPage;
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
@@ -76,7 +79,16 @@ const App = () => {
           <h1>Ponti<span className='color'>Cloud</span></h1>
           <p>Este proyecto está bajo investigación y desarrollo activo. Habrá fallas aquí y allá, pero en general funciona sin problemas. Recuerda solo subir material de trabajo, como archivos Pdf, Word, Excel etc..</p>
           <form onSubmit={handleSubmit}>
-
+            <div className='funcion__premium'>
+              <input
+                className='correo__input'
+                type="email"
+                placeholder="Ingresa tu correo"
+                value={userEmail}
+                onChange={(e) => setUserEmail(e.target.value)}
+              />
+            </div>
+            
             <div className='upload'>
             <label htmlFor="fileUpload" className="btn">
               Selecciona un archivo <i class="bi bi-collection"></i>
