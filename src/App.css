@@ -93,53 +93,46 @@ main p {
   cursor: pointer;
 }
 
-.table {
-  display: flex;
-  flex-direction: column;
-  border-radius: 1rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-}
-
-.table img {
-  position: absolute;
-  width: 50%;
-  z-index: -99999;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-  opacity: 0.1;
-}
-
-/* Fila de encabezado */
-.row {
-  display: flex;
-  background-color: #6246EA;
-  color: white;
-  font-weight: bold;
-  padding: 12px;
-}
-
-/* Celdas (divs dentro de una fila) */
-.cell {
-  flex: 1;
-  padding: 12px;
+table {
+  border-collapse: collapse;
+  background-color: #1e1e1e;
+  color: #ffffff;
   text-align: left;
+  border-radius: 8px;
+  overflow: hidden;
+  width: auto; /* Ancho fijo para la tabla */
+  table-layout: fixed; /* Fija el ancho de las columnas */
+}
 
+th, td {
+  padding: 12px 16px;
+  white-space: nowrap; /* Evita que el texto se desborde en varias líneas */
   overflow: hidden; /* Oculta el exceso de texto */
+  text-overflow: ellipsis;
 }
 
-/* Estilo para las filas de contenido */
-.row:nth-child(even) {
-  background-color: #5f4bdb;
+td a {
+  color: #6246EA;
+  text-decoration: none;
 }
 
-.row:nth-child(odd) {
-  background-color: #7a61d0;
+th {
+  text-transform: uppercase;
+  font-size: 0.9em;
+  color: #888888;
 }
 
-.row:hover {
-  background-color: #4538a6;
+td:first-child {
+  max-width: 200px; /* Ancho máximo para la columna "Nombre del archivo" */
+  word-wrap: break-word; /* Permite que el texto largo se divida en varias líneas */
+}
+
+tr:nth-child(odd) {
+  background-color: #252526;
+}
+
+tr:hover {
+  background-color: #333333;
 }
 
 .pagination {

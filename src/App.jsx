@@ -13,7 +13,7 @@ const App = () => {
   const [selectedFileName, setSelectedFileName] = useState(null);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const rowsPerPage = 5;
+  const rowsPerPage = 10;
 
   useEffect(() => {
     const unsubscribe = onSnapshot(
@@ -74,25 +74,40 @@ const App = () => {
           <p>Tu archivo aparecerá en la tabla una vez terminado el proceso de carga.</p>
         </div>
         <div>
-
+        <table>
+              <thead>
+                <tr>
+                  <th><i className="bi bi-translate"></i> Nombre del archivo</th>
+                  <th><i className="bi bi-hdd"></i> Tamaño del archivo</th>
+                  <th><i className="bi bi-calendar-week"></i> Fecha</th>
+                </tr>
+              </thead>
+              <tbody>
+              {loading ? (
+                <tr>
+                  <td colSpan="3">¡Estamos buscando tu archivo, espera un toque nomás!</td>
+                </tr>
+              ) : (
+                currentRows
+                  .filter(file => !file.userEmail) // Filtra los archivos que no tienen correo electrónico
+                  .map((file) => (
+                    <tr key={file.id}>
+                      <td>
+                        <i className="bi bi-file-earmark-arrow-down"></i> <a href={file.url}>{file.name}</a>
+                      </td>
+                      <td>
+                        <i className="bi bi-hdd"></i> {(file.size / 1048576).toFixed(2)} MB
+                      </td>
+                      <td>
+                        <i className="bi bi-calendar-week"></i> {file.uploadedAt.toDate().toLocaleDateString()}
+                      </td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+            </table>
         
-        <div className="table">
-          <img src="/icon_logo_ligth_mode.png" alt="waifu" />
-          <div className="row">
-            <div className="cell">Nombre del archivo</div>
-            <div className="cell">Peso del archivo</div>
-            <div className="cell">Fecha</div>
-          </div>
-          
-          {loading && <div className="cell" colSpan="3">Cargando...</div>}
-          {currentRows.map(file => (
-            <div className="row" key={file.id}>
-              <div className="cell">{file.name}</div>
-              <div className="cell">{(file.size / 1024 / 1024).toFixed(2)} MB</div>
-              <div className="cell">{file.uploadedAt.toDate().toLocaleDateString()}</div>
-            </div>
-          ))}
-        </div>
+        
         <div className="pagination">
           {Array.from({ length: Math.ceil(files.length / rowsPerPage) }, (_, index) => (
             <button key={index + 1} onClick={() => paginate(index + 1)}>
