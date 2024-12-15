@@ -135,6 +135,7 @@ table {
   overflow: hidden;
   width: auto; /* Ancho fijo para la tabla */
   table-layout: fixed; /* Fija el ancho de las columnas */
+  box-shadow: var(--primary) 1px 1px 10px;
 }
 
 th, td {
