@@ -93,7 +93,21 @@ main p {
   cursor: pointer;
 }
 
-.upload button:hover {
+.btn {
+  padding: 1rem 2rem;
+  background: var(--primary);
+  color: var(--color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+.btn:hover {
+  background: var(--primary-hover);
+}
+
+button:hover {
   background: var(--primary-hover);
 }
 

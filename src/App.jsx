@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { onSnapshot, collection, query, orderBy } from "firebase/firestore";
+import { onSnapshot, collection, query, orderBy, doc, updateDoc, increment, getDoc } from "firebase/firestore";
 import { db, uploadFile } from './firebase';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
@@ -67,54 +67,77 @@ const App = () => {
         <div className='Container'>
           <h1>PontiCloud</h1>
           <p>Este proyecto está bajo investigación y desarrollo activo. Habrá fallas aquí y allá, pero en general funciona sin problemas. Recuerda solo subir material de trabajo, como archivos Pdf, Word, Excel etc..</p>
-          <div className='upload'>
-            <button>SELECIONAR ARCHIVO</button>
-            <button>SUBIR</button>
-          </div>
-          <p>Tu archivo aparecerá en la tabla una vez terminado el proceso de carga.</p>
+          <form onSubmit={handleSubmit}>
+
+            <div className='upload'>
+            <label htmlFor="fileUpload" className="btn">
+              Selecciona un archivo
+              <input
+                id="fileUpload"
+                type="file"
+                style={{ display: 'none' }}
+                onChange={(e) => {
+                  setFile(e.target.files[0]);
+                  setSelectedFileName(e.target.files[0]?.name);
+                }}
+              />
+            </label>
+
+              <button
+                className={`${!selectedFileName ? 'opacity-50' : ''}`}
+                type="submit"
+                disabled={!selectedFileName} // Deshabilita el botón si no se ha seleccionado un archivo
+              >
+                Subir Archivo <i className="bi bi-cloud-upload"></i>
+              </button>
+            </div>
+            <p className='mt-3'>
+              {selectedFileName ? <span>Archivo seleccionado: <span className="text-info">{selectedFileName}</span></span> : 'Tu archivo aparecerá aquí abajo una vez terminado el proceso de carga.'}
+            </p>
+          </form>
         </div>
+
         <div>
-        <table>
-              <thead>
-                <tr>
-                  <th><i className="bi bi-translate"></i> Nombre del archivo</th>
-                  <th><i className="bi bi-hdd"></i> Tamaño del archivo</th>
-                  <th><i className="bi bi-calendar-week"></i> Fecha</th>
-                </tr>
-              </thead>
-              <tbody>
-              {loading ? (
-                <tr>
-                  <td colSpan="3">¡Estamos buscando tu archivo, espera un toque nomás!</td>
-                </tr>
-              ) : (
-                currentRows
-                  .filter(file => !file.userEmail) // Filtra los archivos que no tienen correo electrónico
-                  .map((file) => (
-                    <tr key={file.id}>
-                      <td>
-                        <i className="bi bi-file-earmark-arrow-down"></i> <a href={file.url}>{file.name}</a>
-                      </td>
-                      <td>
-                        <i className="bi bi-hdd"></i> {(file.size / 1048576).toFixed(2)} MB
-                      </td>
-                      <td>
-                        <i className="bi bi-calendar-week"></i> {file.uploadedAt.toDate().toLocaleDateString()}
-                      </td>
-                    </tr>
-                  ))
-                )}
-              </tbody>
-            </table>
-        
-        
-        <div className="pagination">
-          {Array.from({ length: Math.ceil(files.length / rowsPerPage) }, (_, index) => (
-            <button key={index + 1} onClick={() => paginate(index + 1)}>
-              {index + 1}
-            </button>
-          ))}
-        </div>
+          <table>
+            <thead>
+              <tr>
+                <th><i className="bi bi-translate"></i> Nombre del archivo</th>
+                <th><i className="bi bi-hdd"></i> Tamaño del archivo</th>
+                <th><i className="bi bi-calendar-week"></i> Fecha</th>
+              </tr>
+            </thead>
+            <tbody>
+            {loading ? (
+              <tr>
+                <td colSpan="3">¡Estamos buscando tu archivo, espera un toque nomás!</td>
+              </tr>
+            ) : (
+              currentRows
+                .filter(file => !file.userEmail) // Filtra los archivos que no tienen correo electrónico
+                .map((file) => (
+                  <tr key={file.id}>
+                    <td>
+                      <i className="bi bi-file-earmark-arrow-down"></i> <a href={file.url}>{file.name}</a>
+                    </td>
+                    <td>
+                      <i className="bi bi-hdd"></i> {(file.size / 1048576).toFixed(2)} MB
+                    </td>
+                    <td>
+                      <i className="bi bi-calendar-week"></i> {file.uploadedAt.toDate().toLocaleDateString()}
+                    </td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+
+          <div className="pagination">
+            {Array.from({ length: Math.ceil(files.length / rowsPerPage) }, (_, index) => (
+              <button key={index + 1} onClick={() => paginate(index + 1)}>
+                {index + 1}
+              </button>
+            ))}
+          </div>
         </div>
       </main>
       <Footer />
