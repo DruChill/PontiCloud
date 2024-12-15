@@ -23,7 +23,7 @@ function Header() {
             </li>
         </ul>
         </nav>
-        <p>JP / EN</p>
+        <div className="badge">Beta</div>
     </header>
   )
 }
