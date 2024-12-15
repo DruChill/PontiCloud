@@ -1,6 +1,9 @@
 :root {
     --background: #000B1D;
     --color: #FFFFFE;
+    --paragraph: #A7A9BE;
+    --primary: #6246EA;
+    --primary-hover: #4538a6;
 }
 
 html {
@@ -8,6 +11,6 @@ html {
 }
 
 body {
-    background: var(--background, #000B1D);
+    background: var(--background);
     color: white;
 }

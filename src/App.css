@@ -69,7 +69,7 @@ main h1 {
 
 main p {
   max-width: 500px;
-  color: var(--paragraph, #A7A9BE);
+  color: var(--paragraph);
   text-align: justify;
   /* paragraph */
   font-family: Poppins;
@@ -86,11 +86,15 @@ main p {
 
 .upload button {
   padding: 1rem 2rem;
-  background: #6246EA;
+  background: var(--primary);
   color: var(--color);
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.upload button:hover {
+  background: var(--primary-hover);
 }
 
 table {
@@ -112,7 +116,7 @@ th, td {
 }
 
 td a {
-  color: #6246EA;
+  color: var(--primary);
   text-decoration: none;
 }
 
@@ -144,7 +148,7 @@ tr:hover {
 .pagination button {
   margin: 0 0.25rem;
   padding: 0.5rem 1rem;
-  background-color: #6246EA;
+  background-color: var(--primary);
   color: white;
   border: none;
   border-radius: 5px;
@@ -152,7 +156,7 @@ tr:hover {
 }
 
 .pagination button:hover {
-  background-color: #4538a6;
+  background-color: var(--primary-hover);
 }
 
 footer {
