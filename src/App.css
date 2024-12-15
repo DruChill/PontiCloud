@@ -94,10 +94,27 @@ main p .text-info {
   color: var(--primary);
 }
 
+.funcion__premium p {
+  font-size: 1rem;
+}
+
+.correo__input {
+  padding: 1rem 2rem;
+  background: var(--primary);
+  color: var(--color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: .5rem;
+}
+
+
 .upload {
   display: flex;
   gap: 1rem;
 }
+
+
 
 .upload button {
   padding: 1rem 2rem;
