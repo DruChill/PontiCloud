@@ -209,3 +209,47 @@ footer a {
   gap: 1rem;
   font-size: 1.5rem;
 }
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+  }
+
+  nav ul {
+    margin-top: 1rem;
+  }
+
+  main {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  main h1 {
+    font-size: 2.5rem;
+  }
+
+  main p {
+    font-size: 1rem;
+  }
+
+  .upload {
+    flex-direction: column;
+  }
+
+  .upload button {
+    width: 100%;
+  }
+
+  footer {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  footer a {
+    text-align: center;
+  }
+
+  .social__media {
+    justify-content: center;
+  }
+}
