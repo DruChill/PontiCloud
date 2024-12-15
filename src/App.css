@@ -75,6 +75,10 @@ main h1 {
   margin: 0;
 }
 
+main h1 .color {
+  color: var(--primary);
+}
+
 main p {
   max-width: 500px;
   color: var(--paragraph);
@@ -84,6 +88,10 @@ main p {
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+
+main p .text-info {
+  color: var(--primary);
 }
 
 .upload {
