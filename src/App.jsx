@@ -10,7 +10,7 @@ import Footer from './assets/Components/Footer';
 const App = () => {
   const [file, setFile] = useState(null);
   const [files, setFiles] = useState([]);
-  const [selectedFileName, setSelectedFileName] = useState(null);
+  const [selectedFileName, setSelectedFileName] = useState('');
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const rowsPerPage = 10;
@@ -26,15 +26,21 @@ const App = () => {
     return unsubscribe;
   }, []);
 
-  const handleDrop = (e) => {
-    e.preventDefault();
-    const droppedFile = e.dataTransfer.files[0];
+  const handleDrop = (event) => {
+    event.preventDefault();
+    const droppedFile = event.dataTransfer.files[0];
     setFile(droppedFile);
     setSelectedFileName(droppedFile.name);
   };
 
-  const handleDragOver = (e) => {
-    e.preventDefault();
+  const handleDragOver = (event) => {
+    event.preventDefault();
+  };
+
+  const handleFileSelect = (event) => {
+    const selectedFile = event.target.files[0];
+    setFile(selectedFile);
+    setSelectedFileName(selectedFile.name);
   };
 
   const handleSubmit = async (e) => {
@@ -61,11 +67,13 @@ const App = () => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <div className='hero__container'>
+    <div className='hero__container' onDrop={handleDrop} 
+    onDragOver={handleDragOver} 
+    style={{ width: '100vw', height: '100vh'}}>
       <Header />
       <main>
         <div className='Container'>
-          <h1>PontiCloud</h1>
+          <h1>Ponti<span className='color'>Cloud</span></h1>
           <p>Este proyecto está bajo investigación y desarrollo activo. Habrá fallas aquí y allá, pero en general funciona sin problemas. Recuerda solo subir material de trabajo, como archivos Pdf, Word, Excel etc..</p>
           <form onSubmit={handleSubmit}>
 
