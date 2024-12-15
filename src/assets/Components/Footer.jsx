@@ -4,9 +4,23 @@ function Footer() {
   const today = new Date();
 
   return (
-    <footer className='footer pt-3 mt-4 text-body-secondary border-top d-flex justify-content-between'>
-        <p>Powered by <a className='text-decoration-none text-info' href="https://github.com/DruChill">Andru A.RR</a></p>
-        <p>&copy;{today.getFullYear()}</p>
+    <footer>
+    <p>&copy; PontiCloud.</p>
+    <div className='social__media'>
+      <a href="#">
+        <i class="bi bi-github"></i>
+      </a>
+      <a href="#">
+        <i class="bi bi-twitter"></i>
+      </a>
+      <a href="#">
+        <i class="bi bi-facebook"></i>
+      </a>
+      <a href="#">
+        <i class="bi bi-instagram"></i>
+      </a>
+    </div>
+    <p>&hearts;{today.getFullYear()}</p>
   </footer>
   )
 }

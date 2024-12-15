@@ -2,35 +2,29 @@ import React from 'react'
 
 function Header() {
   return (
-    <header className='pb-md-2 mb-md-3 p-0 mb-1 border-bottom d-flex align-items-center justify-content-around'>
-        <div className='d-flex align-items-center text-body-emphasis'>
-            <a href="/">
-                <img src="/icon_logo_ligth_mode.png" alt=""  style={{ width: '70px' }}/>
-            </a>
-        </div>
-        <nav className='text-info'>
-            <ul className='d-flex list-unstyled mb-0 gap-3 fs-4'>
-                <li>
-                    <a href="https://github.com/DruChill/PontiCloud/releases" target='blank'>
-                        <i className="bi bi-github"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="/yape.JPG" className='link-opacity-50-hover' target='blank'>
-                        <i className="bi bi-balloon-heart"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="/contact" target='blank'>
-                        <i className="bi bi-envelope-heart-fill"></i>
-                    </a>
-                </li>
-                {/* <li>
-                    <a href="/sobrenosotros">Mas info</a>
-                </li> */}
-            </ul>
+    <header>
+        <img src="/icon_logo_ligth_mode.png" alt="icon-logo-web-site" />
+        <nav>
+        <ul>
+            <li>
+              <a href="#" className='Active'>Home</a>
+            </li>
+            <li>
+              <a href="#">Donar</a>
+            </li>
+            <li>
+              <a href="#">Contacto</a>
+            </li>
+            <li>
+              <a href="#">Aula Virtual</a>
+            </li>
+            <li>
+              <a href="#">Pontisis</a>
+            </li>
+        </ul>
         </nav>
-  </header>
+        <div className="badge">Beta</div>
+    </header>
   )
 }
 
