@@ -96,8 +96,9 @@ main p {
 .table {
   display: flex;
   flex-direction: column;
-  border-radius: 10px 20px 30px 40px;
+  border-radius: 1rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
 .table img {
@@ -124,6 +125,8 @@ main p {
   flex: 1;
   padding: 12px;
   text-align: left;
+
+  overflow: hidden; /* Oculta el exceso de texto */
 }
 
 /* Estilo para las filas de contenido */
