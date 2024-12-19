@@ -56,6 +56,7 @@ nav ul li a.Active::after {
   color: var(--color);
   padding: 0.5rem 1rem;
   border-radius: 1rem;
+  box-shadow: var(--primary-hover) 1px 1px 30px;
 }
 
 header img {
@@ -90,9 +91,26 @@ main p {
   line-height: normal;
 }
 
-main p .text-info {
+main p .file-select {
   color: var(--primary);
 }
+
+@keyframes glowAnimation {
+  0% {
+    text-shadow: 0 0 5px rgba(98, 70, 234, 0.5), 0 0 10px rgba(98, 70, 234, 0.3), 0 0 20px rgba(98, 70, 234, 0.2);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(98, 70, 234, 1), 0 0 30px rgba(98, 70, 234, 0.8), 0 0 40px rgba(98, 70, 234, 0.6);
+  }
+  100% {
+    text-shadow: 0 0 5px rgba(98, 70, 234, 0.5), 0 0 10px rgba(98, 70, 234, 0.3), 0 0 20px rgba(98, 70, 234, 0.2);
+  }
+}
+
+.glowing-text {
+  animation: glowAnimation 1.5s ease-in-out infinite;
+}
+
 
 .upload {
   display: flex;
@@ -128,14 +146,18 @@ button:hover {
 
 table {
   border-collapse: collapse;
-  background-color: #1e1e1e;
-  color: #ffffff;
+  background-color: #121827;
+  color: #FFFFFF;
   text-align: left;
   border-radius: 8px;
   overflow: hidden;
   width: auto; /* Ancho fijo para la tabla */
   table-layout: fixed; /* Fija el ancho de las columnas */
-  box-shadow: var(--primary) 1px 1px 10px;
+  /* box-shadow: #1E293B 1px 1px 10px; */
+}
+
+thead tr {
+  background-color: #1E1B4B;
 }
 
 th, td {
@@ -146,7 +168,7 @@ th, td {
 }
 
 td a {
-  color: var(--primary);
+  color: #6366F1;
   text-decoration: none;
 }
 td a:hover {
@@ -156,20 +178,25 @@ td a:hover {
 th {
   text-transform: uppercase;
   font-size: 0.9em;
+
+  /*
+  Color de encabezado de la tabla
   color: #888888;
+  */
 }
 
 td:first-child {
   max-width: 200px; /* Ancho máximo para la columna "Nombre del archivo" */
   word-wrap: break-word; /* Permite que el texto largo se divida en varias líneas */
+  /* margin: auto; */
 }
 
-tr:nth-child(odd) {
-  background-color: #252526;
-}
+/* tr:nth-child(odd) {
+  background-color: #1E293B;
+} */
 
 tr:hover {
-  background-color: #333333;
+  background-color: #1E1B4B;
 }
 
 .pagination {
@@ -202,10 +229,60 @@ footer {
 footer a {
   color: var(--color);
   text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+footer a:hover {
+  color: var(--primary);
+  scale: 1.1;
 }
 
 .social__media {
   display: flex;
   gap: 1rem;
   font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+  }
+
+  nav ul {
+    margin-top: 1rem;
+  }
+
+  main {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  main h1 {
+    font-size: 2.5rem;
+  }
+
+  main p {
+    font-size: 1rem;
+  }
+
+  .upload {
+    flex-direction: column;
+  }
+
+  .upload button {
+    width: 100%;
+  }
+
+  footer {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  footer a {
+    text-align: center;
+  }
+
+  .social__media {
+    justify-content: center;
+  }
 }
