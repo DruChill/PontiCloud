@@ -7,7 +7,7 @@ function Footer() {
     <footer>
     <p>&copy; PontiCloud.</p>
     <div className='social__media'>
-      <a href="#">
+      <a href="https://github.com/DruChill/PontiCloud" target='blank'>
         <i class="bi bi-github"></i>
       </a>
       <a href="#">
