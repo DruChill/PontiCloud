@@ -7,23 +7,23 @@ function Header() {
         <nav>
         <ul>
             <li>
-              <a href="#" className='Active'>Home</a>
+              <a href="/" className='Active'>Home</a>
+            </li>
+            {/* <li>
+              <a href="#">Mis Archivos</a>
+            </li> */}
+            <li>
+              <a href="/yape.JPG">Donar</a>
             </li>
             <li>
-              <a href="#">Donar</a>
+              <a href="mailto:andruvrr@gmail.com">Contacto</a>
             </li>
-            <li>
-              <a href="#">Contacto</a>
-            </li>
-            <li>
-              <a href="#">Aula Virtual</a>
-            </li>
-            <li>
-              <a href="#">Pontisis</a>
-            </li>
+            {/* <li>
+              <a href="#">Planes</a>
+            </li> */}
         </ul>
         </nav>
-        <div className="badge">Beta</div>
+        <div className="badge">Nuevo Diseño <i class="bi bi-vector-pen"></i></div>
     </header>
   )
 }
