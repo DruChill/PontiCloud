@@ -6,7 +6,7 @@
 
 ## Web oficial PontiCloud
 
-Podras subir tus trabajos de Rar, Word, Excel, Pdf, JPG, PNG, GIF y mucho más, debido a las restricciones de la escuela.
+Sube tus trabajos de la universidad sin necesidad de un correo, más de 100 archivos compatibles Word, Pdf, Excel, PPT y mucho más!
 [Reportar error](https://github.com/DruChill/PontiCloud/issues) - [Sugerir algo](https://github.com/DruChill/PontiCloud/issues)
 
 </div>
@@ -15,10 +15,10 @@ Podras subir tus trabajos de Rar, Word, Excel, Pdf, JPG, PNG, GIF y mucho más, 
 
 - **Detalles**: Puedes subir y descargar archivos de trabajo como Rar, Word, Excel, Pdf, JPG, PNG, GIF Etc.
 
-> [!NOTE]
-> Solo archivos de trabajo y el archivo no debe pesar no más de 5MB.
-
-- **Propia nube**: Pronto, nos estamos enfocando en mejorar la experiencia del usuario en ponticloud. StudentCloud aun esta en desarrollo.
+> [!WARNING]
+> Solo archivos de trabajo y el archivo no debe pesar más de 5MB.
+ 
+<!-- - **Propia nube**: Pronto, nos estamos enfocando en mejorar la experiencia del usuario en ponticloud. StudentCloud aun esta en desarrollo. -->
 
 
 <!-- ## Para empezar
