@@ -5,22 +5,22 @@ function Footer() {
 
   return (
     <footer>
-    <p>&copy; PontiCloud.</p>
+    <p>&copy; by AndruRR</p>
     <div className='social__media'>
       <a href="https://github.com/DruChill/PontiCloud" target='blank'>
         <i class="bi bi-github"></i>
       </a>
-      <a href="#">
-        <i class="bi bi-twitter"></i>
+      <a href="https://www.paypal.com/donate/?hosted_button_id=7P22SAK9FTTJC" target='blank'>
+        <i class="bi bi-paypal"></i>
       </a>
       <a href="#">
-        <i class="bi bi-facebook"></i>
+        <i class="bi bi-twitter-x"></i>
       </a>
       <a href="#">
-        <i class="bi bi-instagram"></i>
+        <i class="bi bi-discord"></i>
       </a>
     </div>
-    <p>&hearts;{today.getFullYear()}</p>
+    <p>&hearts; {today.getFullYear()}</p>
   </footer>
   )
 }
