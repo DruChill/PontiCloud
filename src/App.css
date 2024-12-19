@@ -252,6 +252,10 @@ footer a:hover {
     margin-top: 1rem;
   }
 
+  .badge {
+    margin: 0.5rem;
+  }
+
   main {
     flex-direction: column;
     text-align: center;
@@ -259,6 +263,7 @@ footer a:hover {
 
   main h1 {
     font-size: 2.5rem;
+    margin-bottom: .5rem;
   }
 
   main p {
@@ -270,6 +275,10 @@ footer a:hover {
   }
 
   .upload button {
+    width: 100%;
+  }
+
+  table {
     width: 100%;
   }
 
