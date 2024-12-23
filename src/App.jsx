@@ -79,14 +79,20 @@ const handleSubmit = async (e) => {
           <h1>Ponti<span className='color'>Cloud</span></h1>
           <p>Este proyecto está bajo investigación y desarrollo activo. Habrá fallas aquí y allá, pero en general funciona sin problemas. Recuerda solo subir material de trabajo, como archivos Pdf, Word, Excel etc..</p>
           <form onSubmit={handleSubmit}>
-            <div className='funcion__premium'>
-              <input
-                className='correo__input'
-                type="email"
-                placeholder="Ingresa tu correo"
-                value={userEmail}
-                onChange={(e) => setUserEmail(e.target.value)}
-              />
+            <div className='premium'>
+              <div className='funcion__premium'>
+                <input
+                  className='correo__input'
+                  type="email"
+                  placeholder="Ingresa tu correo"
+                  value={userEmail}
+                  onChange={(e) => setUserEmail(e.target.value)}
+                />
+              </div>
+
+              <div>
+                <p><i class="bi bi-arrow-bar-left"></i> Beta <i class="bi bi-question-circle"></i></p>
+              </div>
             </div>
             
             <div className='upload'>
