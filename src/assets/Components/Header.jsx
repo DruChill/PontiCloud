@@ -26,7 +26,9 @@ function Header() {
           </li> */}
         </ul>
       </nav>
-      <div className="badge">Nuevo Diseño <i className="bi bi-vector-pen"></i></div>
+      <div className="badge">
+        {location.pathname === '/mis-archivos' ? 'Beta' : 'Nuevo Diseño'} <i className="bi bi-vector-pen"></i>
+      </div>
     </header>
   );
 }
