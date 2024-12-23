@@ -13,11 +13,14 @@ function Footer() {
       <a href="https://www.paypal.com/donate/?hosted_button_id=7P22SAK9FTTJC" target='blank'>
         <i class="bi bi-paypal"></i>
       </a>
-      <a href="#">
+      {/* <a href="#">
         <i class="bi bi-twitter-x"></i>
-      </a>
+      </a> */}
       <a href="#">
         <i class="bi bi-discord"></i>
+      </a>
+      <a href="#">
+      <i class="bi bi-book"></i>
       </a>
     </div>
     <p>&hearts; {today.getFullYear()}</p>
