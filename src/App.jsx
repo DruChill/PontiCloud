@@ -45,7 +45,7 @@ const App = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (file.size > 5 * 1024 * 1024) {
+    if (file.size > 50 * 1024 * 1024) {
       alert("El archivo es muy pesado solo se admite 5MB");
       return;
     }
