@@ -251,6 +251,10 @@ footer a:hover {
   nav ul {
     margin-top: 1rem;
   }
+  
+  ul {
+    padding: 0;
+  }
 
   .badge {
     margin: 0.5rem;

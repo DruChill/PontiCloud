@@ -23,7 +23,7 @@ function Header() {
             </li> */}
         </ul>
         </nav>
-        <div className="badge">Nuevo Diseño <i class="bi bi-vector-pen"></i></div>
+        <div className="badge">Nuevo Diseño <i className="bi bi-vector-pen"></i></div>
     </header>
   )
 }

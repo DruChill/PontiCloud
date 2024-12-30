@@ -79,7 +79,7 @@ const App = () => {
 
             <div className='upload'>
             <label htmlFor="fileUpload" className="btn">
-              Selecciona un archivo <i class="bi bi-collection"></i>
+              Selecciona un archivo <i className="bi bi-collection"></i>
               <input
                 id="fileUpload"
                 type="file"
