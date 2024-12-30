@@ -106,13 +106,12 @@ main p .file-select {
 }
 
 .correo__input {
-  padding: 1rem 2rem;
+  padding: 1rem 2.1rem;
   background: var(--primary);
   color: var(--color);
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  margin-bottom: .5rem;
 }
 
 
