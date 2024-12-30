@@ -44,17 +44,18 @@ const App = () => {
     setSelectedFileName(selectedFile.name);
   };
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  const email = e.target.email.value; // Asumiendo que el campo de correo electrónico tiene el nombre 'email'
-  const fileSizeLimit = email ? 50 * 1024 * 1024 : 5 * 1024 * 1024; // 50 MB si hay correo, 5 MB si no
-
-  // Check file size
-  if (file.size > fileSizeLimit) {
-    alert(`El archivo es muy pesado, solo se admite ${email ? '50MB' : '5MB'}`);
-    return;
-  }
-
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const emailField = e.target.email;
+    const email = emailField ? emailField.value : ''; // Verifica si el campo de correo electrónico existe
+    const fileSizeLimit = email ? 50 * 1024 * 1024 : 5 * 1024 * 1024; // 50 MB si hay correo, 5 MB si no
+  
+    // Check file size
+    if (file.size > fileSizeLimit) {
+      alert(`El archivo es muy pesado, solo se admite ${email ? '50MB' : '5MB'}`);
+      return;
+    }
+  
   try {
     NProgress.start(); // Inicia la barra de progreso
     await uploadFile(file, userEmail);
@@ -87,6 +88,7 @@ const handleSubmit = async (e) => {
                 <input
                   className='correo__input'
                   type="email"
+                  name='email'
                   placeholder="Ingresa tu correo"
                   value={userEmail}
                   onChange={(e) => setUserEmail(e.target.value)}
