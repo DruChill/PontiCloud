@@ -234,13 +234,12 @@ footer a {
 
 footer a:hover {
   color: var(--primary);
-  scale: 1.1;
 }
 
 .social__media {
   display: flex;
   gap: 1rem;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
 }
 
 @media (max-width: 768px) {
