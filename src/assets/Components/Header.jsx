@@ -7,7 +7,7 @@ function Header() {
         <nav>
         <ul>
             <li>
-              <a href="/" className='Active'>Home</a>
+              <a href="/" className='Active'>Inicio</a>
             </li>
             {/* <li>
               <a href="#">Mis Archivos</a>
@@ -23,7 +23,9 @@ function Header() {
             </li> */}
         </ul>
         </nav>
-        <div className="badge">Nuevo Diseño <i className="bi bi-vector-pen"></i></div>
+        <a href="https://www.figma.com/design/IAzZGCFH3u42pOouyr6PcG/ponticloud?node-id=0-1&t=JNKnipsySTDMYoML-1">
+          <div className="badge">Nuevo Diseño <i className="bi bi-vector-pen"></i></div>
+        </a>
     </header>
   )
 }
