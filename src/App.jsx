@@ -6,6 +6,7 @@ import 'nprogress/nprogress.css';
 import './App.css';
 import Header from './assets/Components/Header';
 import Footer from './assets/Components/Footer';
+import Animation from './assets/Components/Animation';
 
 const App = () => {
   const [file, setFile] = useState(null);
@@ -73,7 +74,9 @@ const App = () => {
       <Header />
       <main>
         <div className='Container'>
-          <h1>Ponti<span className='color'>Cloud</span></h1>
+          <h1>Ponti<span className="color">Cloud</span> </h1>
+          <i class="bi bi-option"></i> <Animation />
+          
           <p>Este proyecto está bajo investigación y desarrollo activo. Habrá fallas aquí y allá, pero en general funciona sin problemas. Recuerda solo subir material de trabajo, como archivos Pdf, Word, Excel etc..</p>
           <form onSubmit={handleSubmit}>
 
