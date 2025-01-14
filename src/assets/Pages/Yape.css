@@ -1,0 +1,16 @@
+.Card ul li {
+    list-style: none;
+}
+
+.Card ul {
+    padding: 0;
+    gap: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.Card ul li {
+    padding: 1rem;
+    background-color: var(--primary);
+    border-radius: .7rem;
+}

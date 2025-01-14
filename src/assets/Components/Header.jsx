@@ -13,7 +13,7 @@ function Header() {
               <a href="#">Mis Archivos</a>
             </li> */}
             <li>
-              <a href="/yape.JPG">Donar</a>
+              <a href="/yape">Donar</a>
             </li>
             <li>
               <a href="mailto:andruvrr@gmail.com">Contacto</a>
