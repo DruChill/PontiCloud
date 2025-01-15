@@ -12,11 +12,11 @@ function Header() {
           <li>
             <a href="/" className={location.pathname === '/' ? 'Active' : ''}>Home</a>
           </li>
-          <li>
+          {/* <li>
             <a href="/mis-archivos" className={location.pathname === '/mis-archivos' ? 'Active' : ''}>Mis Archivos</a>
-          </li>
+          </li> */}
           <li>
-            <a href="/yape" className={location.pathname === '/yape.JPG' ? 'Active' : ''}>Donar</a>
+            <a href="/yape.JPG" target='blank' className={location.pathname === '/yape' ? 'Active' : ''}>Donar</a>
           </li>
           <li>
             <a href="mailto:andruvrr@gmail.com" className={location.pathname === '/contacto' ? 'Active' : ''}>Contacto</a>
