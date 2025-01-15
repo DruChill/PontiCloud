@@ -20,6 +20,9 @@ function Footer() {
       <a href="#">
         <i className="bi bi-discord"></i>
       </a>
+      <a href="#">
+      <i class="bi bi-book"></i>
+      </a>
     </div>
     <p>&hearts; {today.getFullYear()}</p>
   </footer>

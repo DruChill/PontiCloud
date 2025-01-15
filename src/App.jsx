@@ -14,6 +14,7 @@ const App = () => {
   const [selectedFileName, setSelectedFileName] = useState('');
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
+  const [userEmail, setUserEmail] = useState('');
   const rowsPerPage = 10;
 
   useEffect(() => {
@@ -46,20 +47,26 @@ const App = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (file.size > 50 * 1024 * 1024) {
-      alert("El archivo es muy pesado solo se admite 5MB");
+    const emailField = e.target.email;
+    const email = emailField ? emailField.value : ''; // Verifica si el campo de correo electrónico existe
+    const fileSizeLimit = email ? 50 * 1024 * 1024 : 5 * 1024 * 1024; // 50 MB si hay correo, 5 MB si no
+  
+    // Check file size
+    if (file.size > fileSizeLimit) {
+      alert(`El archivo es muy pesado, solo se admite ${email ? '50MB' : '5MB'}`);
       return;
     }
-    try {
-      NProgress.start();
-      await uploadFile(file);
-      NProgress.done();
-      setSelectedFileName(null);
-    } catch (error) {
-      NProgress.done();
-      console.log(error);
-    }
-  };
+  
+  try {
+    NProgress.start(); // Inicia la barra de progreso
+    await uploadFile(file, userEmail);
+    NProgress.done(); // Finaliza la barra de progreso
+    setSelectedFileName(null);
+  } catch (error) {
+    NProgress.done(); // Finaliza la barra de progreso en caso de error
+    alert(error.message); // Muestra el mensaje de error
+  }
+};
 
   const indexOfLastRow = currentPage * rowsPerPage;
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
@@ -79,7 +86,23 @@ const App = () => {
           
           <p>Este proyecto está bajo investigación y desarrollo activo. Habrá fallas aquí y allá, pero en general funciona sin problemas. Recuerda solo subir material de trabajo, como archivos Pdf, Word, Excel etc..</p>
           <form onSubmit={handleSubmit}>
+            <div className='premium'>
+              <div className='funcion__premium'>
+                <input
+                  className='correo__input'
+                  type="email"
+                  name='email'
+                  placeholder="Ingresa tu correo"
+                  value={userEmail}
+                  onChange={(e) => setUserEmail(e.target.value)}
+                />
+              </div>
 
+              <div>
+                <p><i class="bi bi-arrow-bar-left"></i> Beta <i class="bi bi-question-circle"></i></p>
+              </div>
+            </div>
+            
             <div className='upload'>
             <label htmlFor="fileUpload" className="btn">
               Selecciona un archivo <i className="bi bi-collection"></i>

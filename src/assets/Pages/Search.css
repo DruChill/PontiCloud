@@ -1,0 +1,15 @@
+.search__container {
+  display: grid;
+  min-height: 100dvh;
+  grid-template-rows: auto 1fr auto;
+}
+
+.main__search {
+  text-align: center;
+}
+
+.premium__search {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
