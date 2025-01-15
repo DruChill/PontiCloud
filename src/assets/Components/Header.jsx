@@ -16,7 +16,7 @@ function Header() {
             <a href="/mis-archivos" className={location.pathname === '/mis-archivos' ? 'Active' : ''}>Mis Archivos</a>
           </li>
           <li>
-            <a href="/yape.JPG" className={location.pathname === '/yape.JPG' ? 'Active' : ''}>Donar</a>
+            <a href="/yape" className={location.pathname === '/yape.JPG' ? 'Active' : ''}>Donar</a>
           </li>
           <li>
             <a href="mailto:andruvrr@gmail.com" className={location.pathname === '/contacto' ? 'Active' : ''}>Contacto</a>
