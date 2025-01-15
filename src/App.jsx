@@ -49,7 +49,7 @@ const App = () => {
     e.preventDefault();
     const emailField = e.target.email;
     const email = emailField ? emailField.value : ''; // Verifica si el campo de correo electrónico existe
-    const fileSizeLimit = email ? 50 * 1024 * 1024 : 5 * 1024 * 1024; // 50 MB si hay correo, 5 MB si no
+    const fileSizeLimit = email ? 100 * 1024 * 1024 : 50 * 1024 * 1024; // 50 MB si hay correo, 5 MB si no
   
     // Check file size
     if (file.size > fileSizeLimit) {
@@ -82,11 +82,11 @@ const App = () => {
       <main>
         <div className='Container'>
           <h1>Ponti<span className="color">Cloud</span> </h1>
-          <i class="bi bi-option"></i> <Animation />
+          <i className="bi bi-option"></i> <Animation />
           
           <p>Este proyecto está bajo investigación y desarrollo activo. Habrá fallas aquí y allá, pero en general funciona sin problemas. Recuerda solo subir material de trabajo, como archivos Pdf, Word, Excel etc..</p>
           <form onSubmit={handleSubmit}>
-            <div className='premium'>
+            {/* <div className='premium'>
               <div className='funcion__premium'>
                 <input
                   className='correo__input'
@@ -99,23 +99,23 @@ const App = () => {
               </div>
 
               <div>
-                <p><i class="bi bi-arrow-bar-left"></i> Beta <i class="bi bi-question-circle"></i></p>
+                <p><i className="bi bi-arrow-bar-left"></i> Beta <i className="bi bi-question-circle"></i></p>
               </div>
-            </div>
+            </div> */}
             
             <div className='upload'>
-            <label htmlFor="fileUpload" className="btn">
-              Selecciona un archivo <i className="bi bi-collection"></i>
-              <input
-                id="fileUpload"
-                type="file"
-                style={{ display: 'none' }}
-                onChange={(e) => {
-                  setFile(e.target.files[0]);
-                  setSelectedFileName(e.target.files[0]?.name);
-                }}
-              />
-            </label>
+              <label htmlFor="fileUpload" className="btn">
+                Selecciona un archivo <i className="bi bi-collection"></i>
+                <input
+                  id="fileUpload"
+                  type="file"
+                  style={{ display: 'none' }}
+                  onChange={(e) => {
+                    setFile(e.target.files[0]);
+                    setSelectedFileName(e.target.files[0]?.name);
+                  }}
+                />
+              </label>
 
               <button
                 className={`${!selectedFileName ? 'opacity-50' : ''}`}
@@ -124,6 +124,7 @@ const App = () => {
               >
                 Subir Archivo <i className="bi bi-cloud-upload"></i>
               </button>
+
             </div>
             <p className='mt-3'>
               {selectedFileName ? <span>Archivo seleccionado: <span className="file-select glowing-text">{selectedFileName}</span></span> : 'Tu archivo aparecerá en la tabla una vez terminado el proceso de carga.'}
