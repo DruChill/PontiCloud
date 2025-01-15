@@ -49,28 +49,29 @@ const App = () => {
     e.preventDefault();
     const emailField = e.target.email;
     const email = emailField ? emailField.value : ''; // Verifica si el campo de correo electrónico existe
-    const fileSizeLimit = email ? 100 * 1024 * 1024 : 50 * 1024 * 1024; // 50 MB si hay correo, 5 MB si no
-  
+    const fileSizeLimit = email ? 100 * 1024 * 1024 : 5 * 1024 * 1024; // 50 MB si hay correo, 5 MB si no logica
+
     // Check file size
     if (file.size > fileSizeLimit) {
-      alert(`El archivo es muy pesado, solo se admite ${email ? '50MB' : '5MB'}`);
+      alert(`El archivo es muy pesado, solo se admite ${email ? '100MB' : '50MB'}`); // Premium 100MB, Free 50MB Alerta
       return;
     }
-  
-  try {
-    NProgress.start(); // Inicia la barra de progreso
-    await uploadFile(file, userEmail);
-    NProgress.done(); // Finaliza la barra de progreso
-    setSelectedFileName(null);
-  } catch (error) {
-    NProgress.done(); // Finaliza la barra de progreso en caso de error
-    alert(error.message); // Muestra el mensaje de error
-  }
-};
+
+    try {
+      NProgress.start(); // Inicia la barra de progreso
+      await uploadFile(file, email);
+      NProgress.done(); // Finaliza la barra de progreso
+      setSelectedFileName(null);
+    } catch (error) {
+      NProgress.done(); // Finaliza la barra de progreso en caso de error
+      alert(error.message); // Muestra el mensaje de error
+    }
+  };
 
   const indexOfLastRow = currentPage * rowsPerPage;
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
-  const currentRows = files.slice(indexOfFirstRow, indexOfLastRow);
+  const filteredFiles = files.filter(file => !file.userEmail); // Filtra los archivos que no tienen correo electrónico
+  const currentRows = filteredFiles.slice(indexOfFirstRow, indexOfLastRow);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -80,12 +81,13 @@ const App = () => {
     style={{ width: '100vw', height: '100vh'}}>
       <Header />
       <main>
-        <div className='Container'>
+        <div>
           <h1>Ponti<span className="color">Cloud</span> </h1>
           <i className="bi bi-option"></i> <Animation />
           
           <p>Este proyecto está bajo investigación y desarrollo activo. Habrá fallas aquí y allá, pero en general funciona sin problemas. Recuerda solo subir material de trabajo, como archivos Pdf, Word, Excel etc..</p>
           <form onSubmit={handleSubmit}>
+            
             {/* <div className='premium'>
               <div className='funcion__premium'>
                 <input
@@ -99,7 +101,7 @@ const App = () => {
               </div>
 
               <div>
-                <p><i className="bi bi-arrow-bar-left"></i> Beta <i className="bi bi-question-circle"></i></p>
+                <p><i className="bi bi-arrow-bar-left"></i> Premium <i className="bi bi-question-circle"></i></p>
               </div>
             </div> */}
             
@@ -118,7 +120,7 @@ const App = () => {
               </label>
 
               <button
-                className={`${!selectedFileName ? 'opacity-50' : ''}`}
+                className={`${!selectedFileName ? 'cursor-not-allowed' : ''}`}
                 type="submit"
                 disabled={!selectedFileName} // Deshabilita el botón si no se ha seleccionado un archivo
               >
@@ -126,7 +128,7 @@ const App = () => {
               </button>
 
             </div>
-            <p className='mt-3'>
+            <p>
               {selectedFileName ? <span>Archivo seleccionado: <span className="file-select glowing-text">{selectedFileName}</span></span> : 'Tu archivo aparecerá en la tabla una vez terminado el proceso de carga.'}
             </p>
           </form>
@@ -147,27 +149,25 @@ const App = () => {
                 <td colSpan="3">¡Estamos buscando tu archivo, espera un toque nomás!</td>
               </tr>
             ) : (
-              currentRows
-                .filter(file => !file.userEmail) // Filtra los archivos que no tienen correo electrónico
-                .map((file) => (
-                  <tr key={file.id}>
-                    <td>
-                      <i className="bi bi-file-earmark-arrow-down"></i> <a href={file.url}>{file.name}</a>
-                    </td>
-                    <td>
-                      <i className="bi bi-hdd"></i> {(file.size / 1048576).toFixed(2)} MB
-                    </td>
-                    <td>
-                      <i className="bi bi-calendar-week"></i> {file.uploadedAt.toDate().toLocaleDateString()}
-                    </td>
-                  </tr>
-                ))
-              )}
+              currentRows.map((file) => (
+                <tr key={file.id}>
+                  <td>
+                    <i className="bi bi-file-earmark-arrow-down"></i> <a href={file.url}>{file.name}</a>
+                  </td>
+                  <td>
+                    <i className="bi bi-hdd"></i> {(file.size / 1048576).toFixed(2)} MB
+                  </td>
+                  <td>
+                    <i className="bi bi-calendar-week"></i> {file.uploadedAt.toDate().toLocaleDateString()}
+                  </td>
+                </tr>
+              ))
+            )}
             </tbody>
           </table>
 
           <div className="pagination">
-            {Array.from({ length: Math.ceil(files.length / rowsPerPage) }, (_, index) => (
+            {Array.from({ length: Math.ceil(filteredFiles.length / rowsPerPage) }, (_, index) => (
               <button key={index + 1} onClick={() => paginate(index + 1)}>
                 {index + 1}
               </button>
