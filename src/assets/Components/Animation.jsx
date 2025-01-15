@@ -7,7 +7,7 @@ function Animation() {
 
   React.useEffect(() => {
     const typed = new Typed(el.current, {
-      strings: ['Hecho por y para estudiantes', 'Sube todo lo que necesites', 'Gratis y sin registro!'],
+      strings: ['Hecho por y para estudiantes', 'Sube todo lo que necesites', 'Gratis y sin necesidad de registrarte!'],
       typeSpeed: 75, // Velocidad en mlisegundos para poner una letra,
 	startDelay: 300, // Tiempo de retraso en iniciar la animacion. Aplica tambien cuando termina y vuelve a iniciar,
 	backSpeed: 75, // Velocidad en milisegundos para borrrar una letra,
