@@ -13,12 +13,16 @@ function Footer() {
       <a href="https://www.paypal.com/donate/?hosted_button_id=7P22SAK9FTTJC" target='blank'>
         <i className="bi bi-paypal"></i>
       </a>
-      <a href="#">
-        <i className="bi bi-twitter-x"></i>
+      <a href="https://web.facebook.com/andru.ramirezrodriguez" target='blank'>
+        {/* <i className="bi bi-twitter-x"></i> */}
+        <i className="bi bi-facebook"></i>
       </a>
-      <a href="#">
+      {/* <a href="#">
         <i className="bi bi-discord"></i>
       </a>
+      <a href="#">
+        <i className="bi bi-book"></i>
+      </a> */}
     </div>
     <p>&hearts; {today.getFullYear()}</p>
   </footer>

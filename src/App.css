@@ -12,6 +12,10 @@ header {
   padding: 1rem;
 }
 
+header a {
+  text-decoration: none;
+}
+
 nav ul {
   display: flex;
   gap: 1rem;
@@ -95,20 +99,23 @@ main p .file-select {
   color: var(--primary);
 }
 
-@keyframes glowAnimation {
-  0% {
-    text-shadow: 0 0 5px rgba(98, 70, 234, 0.5), 0 0 10px rgba(98, 70, 234, 0.3), 0 0 20px rgba(98, 70, 234, 0.2);
-  }
-  50% {
-    text-shadow: 0 0 20px rgba(98, 70, 234, 1), 0 0 30px rgba(98, 70, 234, 0.8), 0 0 40px rgba(98, 70, 234, 0.6);
-  }
-  100% {
-    text-shadow: 0 0 5px rgba(98, 70, 234, 0.5), 0 0 10px rgba(98, 70, 234, 0.3), 0 0 20px rgba(98, 70, 234, 0.2);
-  }
+.premium {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
 }
 
-.glowing-text {
-  animation: glowAnimation 1.5s ease-in-out infinite;
+.funcion__premium p {
+  font-size: 1rem;
+}
+
+.correo__input {
+  padding: 1rem 2.1rem;
+  background: var(--primary);
+  color: var(--color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 
@@ -116,6 +123,8 @@ main p .file-select {
   display: flex;
   gap: 1rem;
 }
+
+
 
 .upload button {
   padding: 1rem 2rem;

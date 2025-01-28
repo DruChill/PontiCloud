@@ -1,8 +1,7 @@
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, addDoc } from 'firebase/firestore';
+import { getFirestore, collection, addDoc, getDocs, query, where } from 'firebase/firestore';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { v4 as uuidv4 } from 'uuid';
-
 
 const firebaseConfig = {
   // Your web app's Firebase configuration
@@ -14,17 +13,26 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
-
 // Inicializar Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const storage = getStorage(app); // Obtener la instancia de Firebase Storage
 
-const uploadFile = async (file) => {
+const isUserApproved = async (userEmail) => {
+  const q = query(collection(db, "approvedUsers"), where("email", "==", userEmail));
+  const querySnapshot = await getDocs(q);
+  return !querySnapshot.empty;
+};
+
+const uploadFile = async (file, userEmail) => {
+  if (userEmail && !(await isUserApproved(userEmail))) {
+    throw new Error("Usuario no autorizado para subir archivos.");
+  }
+
   const uuid = uuidv4(); // Genera un nuevo UUID para cada archivo que se va a subir
   const extension = file.name.split('.').pop(); // Obtiene la extensión del archivo
+  let folderName = userEmail ? userEmail : 'public'; // Define una carpeta por defecto o maneja el error
 
-  let folderName = '';
   if (file.type.includes('pdf')) {
     folderName = 'pdf';
   } else if (file.type.includes('word')) {
@@ -52,7 +60,8 @@ const uploadFile = async (file) => {
       size: file.size,
       folder: folderName,
       url: fileURL,
-      uploadedAt: new Date() // Fecha de subida
+      uploadedAt: new Date(), // Fecha de subida
+      userEmail: userEmail, // Opcional: Guarda el email del usuario que subió el archivo
     };
 
     // Añade el documento a una colección llamada 'files'
