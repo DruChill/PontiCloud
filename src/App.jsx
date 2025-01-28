@@ -146,7 +146,7 @@ const App = () => {
             <tbody>
             {loading ? (
               <tr>
-                <td colSpan="3">¡Estamos buscando tu archivo, espera un toque nomás!</td>
+                <td colSpan="3">Cargando los archivos... Esto tomará solo un momento.</td>
               </tr>
             ) : (
               currentRows.map((file) => (
