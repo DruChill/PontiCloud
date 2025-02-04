@@ -4,9 +4,9 @@ function Footer() {
   const today = new Date();
 
   return (
-    <footer>
+    <footer className='flex justify-around text-md p-5 bg-base-100 text-base-content'>
     <p>&copy;by Andru RR</p>
-    <div className='social__media'>
+    <div className='flex text-2xl gap-4'>
       <a href="https://github.com/DruChill/PontiCloud" target='blank'>
         <i className="bi bi-github"></i>
       </a>
