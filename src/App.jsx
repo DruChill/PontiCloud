@@ -80,18 +80,17 @@ const App = () => {
     onDragOver={handleDragOver} 
     style={{ width: '100vw', height: '100vh'}}>
       <Header />
-      <main>
-        <div>
-          <h1>Ponti<span>Cloud</span> </h1>
+      <main className="flex flex-col md:flex-row justify-center items-center text-base-content">
+        <div className='w-1/2 p-4'>
+          <h1 className='font-bold text-[48px]'>Ponti<span className='text-indigo-600'>Cloud</span> </h1>
           <i className="bi bi-option"></i> <Animation />
           
-          <p>Este proyecto está bajo investigación y desarrollo activo. Habrá fallas aquí y allá, pero en general funciona sin problemas. Recuerda solo subir material de trabajo, como archivos Pdf, Word, Excel etc..</p>
+          <p className='mb-4' >Este proyecto está bajo investigación y desarrollo activo. Habrá fallas aquí y allá, pero en general funciona sin problemas. Recuerda solo subir material de trabajo, como archivos Pdf, Word, Excel etc..</p>
           <form onSubmit={handleSubmit}>
-            
-            {/* <div className='premium'>
-              <div className='funcion__premium'>
+            <div className='flex items-center mb-2'>
+              <div>
                 <input
-                  className='correo__input'
+                  className='input'
                   type="email"
                   name='email'
                   placeholder="Ingresa tu correo"
@@ -99,14 +98,13 @@ const App = () => {
                   onChange={(e) => setUserEmail(e.target.value)}
                 />
               </div>
-
               <div>
                 <p><i className="bi bi-arrow-bar-left"></i> Premium <i className="bi bi-question-circle"></i></p>
               </div>
-            </div> */}
+            </div>
             
-            <div>
-              <label htmlFor="fileUpload" className="btn">
+            <div className='mb-4'>
+              <label htmlFor="fileUpload" className="btn btn-active btn-secondary me-4">
                 Selecciona un archivo <i className="bi bi-collection"></i>
                 <input
                   id="fileUpload"
@@ -120,7 +118,7 @@ const App = () => {
               </label>
 
               <button
-                className={`${!selectedFileName ? 'cursor-not-allowed' : ''}`}
+                className={`${!selectedFileName ? 'btn cursor-not-allowed' : 'btn btn-active btn-primary'}`}
                 type="submit"
                 disabled={!selectedFileName} // Deshabilita el botón si no se ha seleccionado un archivo
               >
@@ -134,8 +132,8 @@ const App = () => {
           </form>
         </div>
 
-        <div>
-          <table>
+        <div className='p-4'>
+          <table className='table table-zebra table-compact'>
             <thead>
               <tr>
                 <th><i className="bi bi-translate"></i> Nombre del archivo</th>
@@ -151,7 +149,7 @@ const App = () => {
             ) : (
               currentRows.map((file) => (
                 <tr key={file.id}>
-                  <td>
+                  <td className='truncate max-w-[350px]'>
                     <i className="bi bi-file-earmark-arrow-down"></i> <a href={file.url}>{file.name}</a>
                   </td>
                   <td>
