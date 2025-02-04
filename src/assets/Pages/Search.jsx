@@ -3,7 +3,7 @@ import { db } from '../../firebase'; // Ajusta la ruta según sea necesario
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
-import './Search.css';
+
 
 function Search() {
   const [userEmail, setUserEmail] = useState('');

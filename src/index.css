@@ -1,11 +1,3 @@
-:root {
-    --background: #000B1D;
-    --color: #FFFFFE;
-    --paragraph: #A7A9BE;
-    --primary: #6246EA;
-    --primary-hover: #4538a6;
-}
-
 html {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }

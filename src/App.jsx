@@ -76,13 +76,13 @@ const App = () => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <div className='hero__container' onDrop={handleDrop} 
+    <div className='hero__container bg-dark' onDrop={handleDrop} 
     onDragOver={handleDragOver} 
     style={{ width: '100vw', height: '100vh'}}>
       <Header />
       <main>
         <div>
-          <h1>Ponti<span className="color">Cloud</span> </h1>
+          <h1>Ponti<span>Cloud</span> </h1>
           <i className="bi bi-option"></i> <Animation />
           
           <p>Este proyecto está bajo investigación y desarrollo activo. Habrá fallas aquí y allá, pero en general funciona sin problemas. Recuerda solo subir material de trabajo, como archivos Pdf, Word, Excel etc..</p>
@@ -105,7 +105,7 @@ const App = () => {
               </div>
             </div> */}
             
-            <div className='upload'>
+            <div>
               <label htmlFor="fileUpload" className="btn">
                 Selecciona un archivo <i className="bi bi-collection"></i>
                 <input
@@ -166,7 +166,7 @@ const App = () => {
             </tbody>
           </table>
 
-          <div className="pagination">
+          <div>
             {Array.from({ length: Math.ceil(filteredFiles.length / rowsPerPage) }, (_, index) => (
               <button key={index + 1} onClick={() => paginate(index + 1)}>
                 {index + 1}

@@ -1,6 +1,5 @@
 import React from 'react';
 import { useForm, ValidationError } from '@formspree/react';
-import './Contact.css';
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
 
