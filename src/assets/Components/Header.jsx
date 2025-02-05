@@ -7,8 +7,8 @@ function Header() {
 
   return (
     <header className='font-semibold text-base-content py-5 items-center bg-base-200'>
-      <div className="flex justify-around items-center">
-        <div className=''>
+      <div className="flex lg:justify-around justify-between items-center">
+        <div>
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
               <svg
@@ -27,35 +27,35 @@ function Header() {
             <ul
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-              <li><a>phone</a></li>
               <li>
-                <a>Parent</a>
-                <ul className="p-2">
-                  <li><a>Submenu 1</a></li>
-                  <li><a>Submenu 2</a></li>
-                </ul>
+                <a href="/mis-archivos">Mis Archivos</a>
               </li>
-              <li><a>Item 3</a></li>
+              <li>
+                <a href="/yape">Yape</a>
+              </li>
+              <li>
+                <a href="/contact"></a>
+              </li>
             </ul>
           </div>
-          <a className="text-xl">PontiCloud</a>
+          <a className="text-xl" href='/'>PontiCloud</a>
         </div>
 
 
         <div className="hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <a href="/">Home</a>
+              <a href="/mis-archivos">Mis Archivos</a>
             </li>
             <li>
-              <a href="#">Yape</a>
+              <a href="/yape">Yape</a>
             </li>
             <li>
-              <a href="#">Contacto</a>
+              <a href="/contac">Contacto</a>
             </li>
           </ul>
         </div>
-      <div className="">
+      <div>
         <ThemeSelector />
       </div>
     </div>
