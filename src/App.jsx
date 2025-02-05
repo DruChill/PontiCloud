@@ -81,7 +81,7 @@ const App = () => {
     style={{ width: '100vw', height: '100vh'}}>
       <Header />
       <main className="flex flex-col md:flex-row justify-center items-center text-base-content">
-        <div className='w-1/2 p-4'>
+        <div className='lg:w-1/3 p-3'>
           <h1 className='font-bold text-[48px]'>Ponti<span className='text-indigo-600'>Cloud</span> </h1>
           <i className="bi bi-option"></i> <Animation />
           
@@ -90,7 +90,7 @@ const App = () => {
             <div className='flex items-center mb-2'>
               <div>
                 <input
-                  className='input'
+                  className='input input-bordered input-primary w-full max-w-xs'
                   type="email"
                   name='email'
                   placeholder="Ingresa tu correo"
@@ -104,7 +104,7 @@ const App = () => {
             </div>
             
             <div className='mb-4'>
-              <label htmlFor="fileUpload" className="btn btn-active btn-secondary me-4">
+              <label htmlFor="fileUpload" className="btn btn-active btn-primary me-4">
                 Selecciona un archivo <i className="bi bi-collection"></i>
                 <input
                   id="fileUpload"
@@ -118,7 +118,7 @@ const App = () => {
               </label>
 
               <button
-                className={`${!selectedFileName ? 'btn cursor-not-allowed' : 'btn btn-active btn-primary'}`}
+                className={`${!selectedFileName ? 'btn cursor-not-allowed' : 'btn btn-active btn-secondary'}`}
                 type="submit"
                 disabled={!selectedFileName} // Deshabilita el botón si no se ha seleccionado un archivo
               >
@@ -132,8 +132,8 @@ const App = () => {
           </form>
         </div>
 
-        <div className='p-4'>
-          <table className='table table-zebra table-compact'>
+        <div className='lg:w-1/2 p-4'>
+          <table className='table table-compact bg-base-200 lg:block hidden'>
             <thead>
               <tr>
                 <th><i className="bi bi-translate"></i> Nombre del archivo</th>
