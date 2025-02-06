@@ -82,10 +82,10 @@ const App = () => {
       <Header />
       <main className="grid grid-cols-1 lg:grid-cols-2 items-center text-base-content gap-4 lg:container mx-auto">
         <div>
-          <h1 className='font-bold text-[48px]'>Ponti<span className='text-indigo-600'>Cloud</span> </h1>
+          <h1 className='font-bold text-6xl'>Ponti<span className='text-primary'>Cloud</span></h1>
           <i className="bi bi-option"></i> <Animation />
           
-          <p className='mb-4' >Este proyecto está bajo investigación y desarrollo activo. Habrá fallas aquí y allá, pero en general funciona sin problemas. Recuerda solo subir material de trabajo, como archivos Pdf, Word, Excel etc..</p>
+          <p className='my-4 max-w-xl text-base sm:text-lg leading-relaxed' >Este proyecto está bajo investigación y desarrollo activo. Habrá fallas aquí y allá, pero en general funciona sin problemas. Recuerda solo subir material de trabajo, como archivos Pdf, Word, Excel etc..</p>
           <form onSubmit={handleSubmit}>
             <div className='flex items-center mb-2'>
               <div>
