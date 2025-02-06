@@ -80,7 +80,7 @@ const App = () => {
     onDragOver={handleDragOver} 
     style={{ width: '100vw', height: '100vh'}}>
       <Header />
-      <main className="grid grid-cols-1 lg:grid-cols-2  max-w-[1300px] items-center text-base-content gap-4 mx-auto">
+      <main className="grid grid-cols-1 lg:grid-cols-2  max-w-screen-xl items-center text-base-content gap-4 mx-auto">
         <div>
           <h1 className='font-bold text-[48px]'>Ponti<span className='text-indigo-600'>Cloud</span> </h1>
           <i className="bi bi-option"></i> <Animation />
@@ -132,8 +132,8 @@ const App = () => {
           </form>
         </div>
 
-        <div>
-          <table className='table table-compact bg-base-200 lg:block hidden'>
+        <div className="overflow-x-auto">
+          <table className='table table-compact bg-base-200 '>
             <thead>
               <tr>
                 <th><i className="bi bi-translate"></i> Nombre del archivo</th>
