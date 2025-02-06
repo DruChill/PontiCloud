@@ -99,7 +99,7 @@ const App = () => {
                 />
               </div>
               <div>
-                <p><i className="ms-1 bi bi-arrow-bar-left"></i> Premium <i className="bi bi-question-circle"></i></p>
+                <p><i className="ms-1 bi bi-arrow-bar-left"></i> Premium <i className="bi bi-question-circle "></i></p>
               </div>
             </div>
             
@@ -144,7 +144,7 @@ const App = () => {
             <tbody>
             {loading ? (
               <tr>
-                <td colSpan="3">Cargando los archivos... Esto tomará solo un momento.</td>
+                <td colSpan="3">Cargando los archivos... Esto tomará solo un momento. <span className="loading loading-dots loading-sm"></span></td>
               </tr>
             ) : (
               currentRows.map((file) => (
