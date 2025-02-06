@@ -80,7 +80,7 @@ const App = () => {
     onDragOver={handleDragOver} 
     style={{ width: '100vw', height: '100vh'}}>
       <Header />
-      <main className="grid grid-cols-1 lg:grid-cols-2  max-w-screen-xl items-center text-base-content gap-4 mx-auto">
+      <main className="grid grid-cols-1 lg:grid-cols-2 items-center text-base-content gap-4 lg:container mx-auto">
         <div>
           <h1 className='font-bold text-[48px]'>Ponti<span className='text-indigo-600'>Cloud</span> </h1>
           <i className="bi bi-option"></i> <Animation />
