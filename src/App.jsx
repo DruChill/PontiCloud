@@ -80,8 +80,8 @@ const App = () => {
     onDragOver={handleDragOver} 
     style={{ width: '100vw', height: '100vh'}}>
       <Header />
-      <main className="flex flex-col md:flex-row justify-center items-center text-base-content">
-        <div className='lg:w-1/3 p-3'>
+      <main className="grid grid-cols-1 lg:grid-cols-2  max-w-[1300px] items-center text-base-content gap-4 mx-auto">
+        <div>
           <h1 className='font-bold text-[48px]'>Ponti<span className='text-indigo-600'>Cloud</span> </h1>
           <i className="bi bi-option"></i> <Animation />
           
@@ -132,7 +132,7 @@ const App = () => {
           </form>
         </div>
 
-        <div className='lg:w-1/2 p-4'>
+        <div>
           <table className='table table-compact bg-base-200 lg:block hidden'>
             <thead>
               <tr>
@@ -149,7 +149,7 @@ const App = () => {
             ) : (
               currentRows.map((file) => (
                 <tr key={file.id}>
-                  <td className='truncate max-w-[350px]'>
+                  <td className='truncate  max-w-[350px]'>
                     <i className="bi bi-file-earmark-arrow-down"></i> <a href={file.url}>{file.name}</a>
                   </td>
                   <td>
