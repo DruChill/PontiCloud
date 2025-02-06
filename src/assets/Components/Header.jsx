@@ -7,7 +7,7 @@ function Header() {
 
   return (
     <header className='font-semibold text-base-content py-5 items-center bg-base-200'>
-      <div className="flex lg:justify-around justify-between items-center">
+      <div className="flex justify-between items-center lg:container mx-auto">
         <div>
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -51,7 +51,7 @@ function Header() {
               <a href="/yape">Yape</a>
             </li>
             <li>
-              <a href="/contac">Contacto</a>
+              <a href="/contact">Contacto</a>
             </li>
           </ul>
         </div>
