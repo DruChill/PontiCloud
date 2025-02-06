@@ -99,7 +99,7 @@ const App = () => {
                 />
               </div>
               <div>
-                <p><i className="bi bi-arrow-bar-left"></i> Premium <i className="bi bi-question-circle"></i></p>
+                <p><i className="ms-1 bi bi-arrow-bar-left"></i> Premium <i className="bi bi-question-circle"></i></p>
               </div>
             </div>
             
@@ -133,8 +133,8 @@ const App = () => {
         </div>
 
         <div className="overflow-x-auto">
-          <table className='table table-compact bg-base-200 '>
-            <thead>
+          <table className='table table-compact bg-base-200 shadow'>
+            <thead> 
               <tr>
                 <th><i className="bi bi-translate"></i> Nombre del archivo</th>
                 <th><i className="bi bi-hdd"></i> Tamaño del archivo</th>
@@ -149,7 +149,7 @@ const App = () => {
             ) : (
               currentRows.map((file) => (
                 <tr key={file.id}>
-                  <td className='truncate  max-w-[350px]'>
+                  <td className='link link-hover truncate  max-w-[350px]'>
                     <i className="bi bi-file-earmark-arrow-down"></i> <a href={file.url}>{file.name}</a>
                   </td>
                   <td>
@@ -166,7 +166,7 @@ const App = () => {
 
           <div>
             {Array.from({ length: Math.ceil(filteredFiles.length / rowsPerPage) }, (_, index) => (
-              <button key={index + 1} onClick={() => paginate(index + 1)}>
+              <button className='btn btn-secondary mt-2' key={index + 1} onClick={() => paginate(index + 1)}>
                 {index + 1}
               </button>
             ))}
