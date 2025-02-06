@@ -131,44 +131,50 @@ const App = () => {
             </p>
           </form>
         </div>
-
-        <div className="overflow-x-auto">
-          <table className='table table-compact bg-base-200 shadow'>
-            <thead> 
-              <tr>
-                <th><i className="bi bi-translate"></i> Nombre del archivo</th>
-                <th><i className="bi bi-hdd"></i> Tamaño del archivo</th>
-                <th><i className="bi bi-calendar-week"></i> Fecha</th>
-              </tr>
-            </thead>
-            <tbody>
-            {loading ? (
-              <tr>
-                <td colSpan="3">Cargando los archivos... Esto tomará solo un momento. <span className="loading loading-dots loading-sm"></span></td>
-              </tr>
-            ) : (
-              currentRows.map((file) => (
-                <tr key={file.id}>
-                  <td className='link link-hover truncate  max-w-[350px]'>
-                    <i className="bi bi-file-earmark-arrow-down"></i> <a href={file.url}>{file.name}</a>
-                  </td>
-                  <td>
-                    <i className="bi bi-hdd"></i> {(file.size / 1048576).toFixed(2)} MB
-                  </td>
-                  <td>
-                    <i className="bi bi-calendar-week"></i> {file.uploadedAt.toDate().toLocaleDateString()}
-                  </td>
+        <div className='grid grid-cols-1 gap-4 items-center'>
+          <div className="overflow-x-auto">
+            <table className='table table-compact bg-base-200 shadow'>
+              <thead> 
+                <tr>
+                  <th><i className="bi bi-translate"></i> Nombre del archivo</th>
+                  <th><i className="bi bi-hdd"></i> Tamaño del archivo</th>
+                  <th><i className="bi bi-calendar-week"></i> Fecha</th>
                 </tr>
-              ))
-            )}
-            </tbody>
-          </table>
-
-          <div>
+              </thead>
+              <tbody>
+                {loading ? (
+                  <tr>
+                    <td colSpan="3">Cargando los archivos... Esto tomará solo un momento. <span className="loading loading-dots loading-sm"></span></td>
+                  </tr>
+                ) : (
+                  currentRows.map((file) => (
+                    <tr key={file.id}>
+                      <td className='link link-hover truncate max-w-[350px]'>
+                        <i className="bi bi-file-earmark-arrow-down"></i> <a href={file.url}>{file.name}</a>
+                      </td>
+                      <td>
+                        <i className="bi bi-hdd"></i> {(file.size / 1048576).toFixed(2)} MB
+                      </td>
+                      <td>
+                        <i className="bi bi-calendar-week"></i> {file.uploadedAt.toDate().toLocaleDateString()}
+                      </td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+            </table>
+          </div>
+          <div className="flex justify-center mt-4">
             {Array.from({ length: Math.ceil(filteredFiles.length / rowsPerPage) }, (_, index) => (
-              <button className='btn btn-secondary mt-2' key={index + 1} onClick={() => paginate(index + 1)}>
-                {index + 1}
-              </button>
+              <input
+                key={index + 1}
+                className="join-item btn btn-square"
+                type="radio"
+                name="pagination"
+                aria-label={index + 1}
+                checked={currentPage === index + 1}
+                onChange={() => paginate(index + 1)}
+              />
             ))}
           </div>
         </div>
