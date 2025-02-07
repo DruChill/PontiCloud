@@ -152,7 +152,7 @@ const App = () => {
                   currentRows.map((file) => (
                     <tr key={file.id}>
                       <td className='link link-hover truncate max-w-[350px]'>
-                        <i className="bi bi-file-earmark-arrow-down"></i> <a href={file.url}>{file.name}</a>
+                        <i className="bi bi-file-earmark-arrow-down"></i> <a target='blank' href={file.url}>{file.name}</a>
                       </td>
                       <td>
                         <i className="bi bi-hdd"></i> {(file.size / 1048576).toFixed(2)} MB
