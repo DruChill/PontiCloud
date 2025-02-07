@@ -105,7 +105,7 @@ const App = () => {
             
             <div className='mb-4'>
               <label htmlFor="fileUpload" className="btn btn-active btn-primary me-4">
-                Selecciona un archivo <i className="bi bi-collection"></i>
+                Selecciona un archivo o arrástralo aquí<i className="bi bi-collection"></i>
                 <input
                   id="fileUpload"
                   type="file"
