@@ -118,7 +118,7 @@ const App = () => {
               </label>
 
               <button
-                className={`${!selectedFileName ? 'btn cursor-not-allowed' : 'btn btn-active btn-secondary'}`}
+                className={`${!selectedFileName ? 'btn lg:mt-0 mt-1' : 'btn btn-active btn-secondary'}`}
                 type="submit"
                 disabled={!selectedFileName} // Deshabilita el botón si no se ha seleccionado un archivo
               >
