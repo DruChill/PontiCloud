@@ -12,7 +12,7 @@ const ThemeSelector = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem('data-theme') || 'lofi';
+    const savedTheme = localStorage.getItem('data-theme') || 'cupcake';
     document.documentElement.setAttribute('data-theme', savedTheme);
   }, []);
 
