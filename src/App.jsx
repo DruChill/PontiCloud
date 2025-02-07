@@ -80,7 +80,7 @@ const App = () => {
     onDragOver={handleDragOver} 
     style={{ width: '100vw', height: '100vh'}}>
       <Header />
-      <main className="grid grid-cols-1 lg:grid-cols-2 items-center text-base-content gap-4 lg:container mx-auto">
+      <main className="lg:p-0 p-3 grid grid-cols-1 lg:grid-cols-2 items-center text-base-content gap-4 lg:container mx-auto">
         <div>
           <h1 className='font-bold text-6xl'>Ponti<span className='text-primary'>Cloud</span></h1>
           <i className="bi bi-option"></i> <Animation />
@@ -131,7 +131,7 @@ const App = () => {
             </p>
           </form>
         </div>
-        <div className='grid grid-cols-1 gap-4 items-center'>
+        <div className='grid grid-cols-1 lg:gap-4 gap-0 items-center'>
           <div className="overflow-x-auto">
             <table className='table table-compact bg-base-200 shadow'>
               <thead> 
