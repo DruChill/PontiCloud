@@ -12,7 +12,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <Router>
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path="/contact" element={<Contact />} />
+        <Route path="/contacto" element={<Contact />} />
         <Route path="/mis-archivos" element={<Search />} />
         <Route path="/yape" element={<Yape />} />
       </Routes>
