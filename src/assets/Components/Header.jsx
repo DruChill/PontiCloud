@@ -45,13 +45,16 @@ function Header() {
         <div className="hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
+              <a href="/">Inicio</a>
+            </li>
+            <li>
               <a href="/mis-archivos">Mis Archivos</a>
             </li>
             <li>
               <a href="/yape">Yape</a>
             </li>
             <li>
-              <a href="/contact">Contacto</a>
+              <a href="/contacto">Contacto</a>
             </li>
           </ul>
         </div>
