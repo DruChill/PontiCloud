@@ -77,7 +77,7 @@ const App = () => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <div className='hero__container bg-dark' onDrop={handleDrop} 
+    <div className='hero__container' onDrop={handleDrop} 
     onDragOver={handleDragOver} 
     style={{ width: '100vw', height: '100vh'}}>
       <Header />
@@ -92,7 +92,7 @@ const App = () => {
             <div className='flex items-center mb-2'>
               <div>
                 <input
-                  className='input input-bordered input-primary w-full max-w-xs'
+                  className='input input-bordered input-accent w-full max-w-xs'
                   type="email"
                   name='email'
                   placeholder="Ingresa tu correo"
