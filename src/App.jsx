@@ -89,7 +89,7 @@ const App = () => {
             paragraph="Este proyecto está bajo investigación y desarrollo activo. Habrá fallas aquí y allá, pero en general funciona sin problemas. Recuerda solo subir material de trabajo, como archivos Pdf, Word, Excel etc.."
           />
           <form onSubmit={handleSubmit}>
-            <div className='flex items-center mb-2'>
+            {/* <div className='flex items-center mb-2'>
               <div>
                 <input
                   className='input input-bordered input-accent w-full max-w-xs'
@@ -103,7 +103,7 @@ const App = () => {
               <div>
                 <p><i className="ms-1 bi bi-arrow-bar-left"></i> Premium <i className="bi bi-question-circle "></i></p>
               </div>
-            </div>
+            </div> */}
             
             <div className='mb-4'>
               <label htmlFor="fileUpload" className="btn btn-active btn-primary me-4">
