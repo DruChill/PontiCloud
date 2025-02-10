@@ -18,13 +18,13 @@ function ContactForm() {
   return (
     <div className='hero__container'>
       <Header />
-      <div className='principal lg:p-0 grid grid-cols-1 lg:grid-cols-2 items-center text-base-content gap-4 lg:container mx-auto'>
+      <div className="lg:p-0 p-3 grid grid-cols-1 lg:grid-cols-2 items-center text-base-content gap-4 lg:container mx-auto">
 
         <div>
           <ReusableSection
             title='¡Tu opinión '
             highlight='importa!'
-            paragraph='¿Tienes alguna duda o sugerencia? Ponte en contacto con nosotros a través de nuestro correo electrónico o nuestras redes sociales. ¿Encontraste algún problema o tienes sugerencias para mejorar la web? ¡Nos encantaría saber tu opinión! Tu feedback nos ayuda a hacer de esta plataforma un mejor espacio para compartir y subir tus trabajos de estudio. Cualquier comentario o inconveniente que encuentres, ¡estaríamos felices de escucharlo!'
+            paragraph='¿Encontraste algún problema o tienes sugerencias para mejorar la web? ¡Nos encantaría saber tu opinión! Tu feedback nos ayuda a hacer de esta plataforma un mejor espacio para compartir y subir tus trabajos de estudio. Cualquier comentario o inconveniente que encuentres, ¡estaríamos felices de escucharlo!'
           />
         </div>
 
