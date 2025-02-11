@@ -1,9 +1,41 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from '../Components/Header'
 import Footer from '../Components/Footer'
 import ReusableSection from '../Components/ReusableSection'
+import { onSnapshot, collection, query, orderBy, doc, updateDoc, increment, getDoc } from "firebase/firestore";
+import { db, uploadFile } from '../../firebase';
 
 function Yape() {
+
+
+  const [visitCounter, setVisitCounter] = useState(0);
+  const [hasIncremented, setHasIncremented] = useState(false); // Nuevo estado para controlar la ejecución
+
+
+
+  useEffect(() => {
+    const incrementVisitCounter = async () => {
+      if (hasIncremented) return; // Verifica si ya se ha incrementado
+
+      const visitCounterRef = doc(db, 'config', 'visitCounter');
+    
+      // Incrementar el contador en 1
+      await updateDoc(visitCounterRef, {
+        count: increment(1)
+      });
+      // Obtener el valor actualizado
+      const visitCounterSnap = await getDoc(visitCounterRef);
+      if (visitCounterSnap.exists()) {
+        setVisitCounter(visitCounterSnap.data().count); // Actualiza el estado con el valor del contador
+      }
+      setHasIncremented(true); // Marca como incrementado
+    };
+
+    // Llamar a la función cuando se visite la página
+    incrementVisitCounter();
+  }, [hasIncremented]); // El array vacío asegura que esto solo se ejecute una vez cuando el componente se monte
+
+
   return (
     <div className='hero__container'>
       <Header />
@@ -84,7 +116,7 @@ function Yape() {
               </div>
             </div>
             <div className="stat-title">Total de visitas</div>
-            <div className="stat-value text-secondary">200 Personas</div>
+            <div className="stat-value text-secondary"> {visitCounter} Personas</div>
             <div className="stat-desc">18% más que el mes pasado</div>
           </div>
 
