@@ -7,7 +7,7 @@ import { db, uploadFile } from '../../firebase';
 
 function Yape() {
 
-
+  const [loading, setLoading] = useState(true);
   const [visitCounter, setVisitCounter] = useState(0);
   const [hasIncremented, setHasIncremented] = useState(false); // Nuevo estado para controlar la ejecución
 
@@ -29,6 +29,7 @@ function Yape() {
         setVisitCounter(visitCounterSnap.data().count); // Actualiza el estado con el valor del contador
       }
       setHasIncremented(true); // Marca como incrementado
+      setLoading(false); // Marca como cargado
     };
 
     // Llamar a la función cuando se visite la página
@@ -116,7 +117,10 @@ function Yape() {
               </div>
             </div>
             <div className="stat-title">Total de visitas</div>
-            <div className="stat-value text-secondary"> {visitCounter} Personas</div>
+            <div className="stat-value text-secondary">
+              {/* {loading ? 'Cargando...' : visitCounter} */}
+              {loading ? "Cargando..." : `${visitCounter} Personas`}
+            </div>
             <div className="stat-desc">18% más que el mes pasado</div>
           </div>
 
