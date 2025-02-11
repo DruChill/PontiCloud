@@ -1,23 +1,38 @@
 <div align="center">
 
 <a href="http://ponticloud.web.app/">
-  <img width="300px" src="https://github.com/DruChill/PontiCloud/blob/main/public/icon-readme.png?raw=true" alt="Logo" width="" />
+  <img width="300px" src="https://github.com/DruChill/PontiCloud/blob/main/public/icon-readme.png?raw=true" alt="Logo" />
 </a>
 
-## Web oficial PontiCloud
+# 🌩️ PontiCloud
 
-Sube tus trabajos de la universidad sin necesidad de un correo, más de 100 archivos compatibles Word, Pdf, Excel, PPT y mucho más!
-[Reportar error](https://github.com/DruChill/PontiCloud/issues) - [Sugerir algo](https://github.com/DruChill/PontiCloud/issues)
+**Sube y descarga archivos de la universidad sin necesidad de registrarte.**  
+Todos los archivos subidos son visibles para todos los usuarios y se eliminan automáticamente cada mes.  
+
+📢 [Reportar un error](https://github.com/DruChill/PontiCloud/issues) • 💡 [Sugerir una mejora](https://github.com/DruChill/PontiCloud/issues)
 
 </div>
 
-## Características principales
+## 🚀 Características principales
 
-- **Detalles**: Puedes subir y descargar archivos de trabajo como Rar, Word, Excel, Pdf, JPG, PNG, GIF Etc.
+✔️ **Sin cuenta**: No necesitas registrarte.  
+✔️ **Acceso público**: Los archivos subidos son visibles para todos los usuarios.  
+✔️ **Fácil y rápido**: Sube tu archivo en segundos y descárgalo cuando lo necesites.  
+✔️ **Compatibilidad**: Admite formatos como **RAR, Word, Excel, PDF, JPG, PNG, GIF, etc.**  
+✔️ **Eliminación automática**: Los archivos se eliminan después de **un mes**.  
 
-> [!NOTE]
-> Solo archivos de trabajo y el archivo no debe pesar más de 50MB.
- 
+> ⚠️ **Nota:** Solo para archivos de trabajo. Tamaño máximo permitido: **50 MB**.
+
+## 📌 ¿Cómo usar?
+
+1. **Sube tu archivo** desde la web.  
+2. **Se añadirá automáticamente a la tabla pública** visible para todos los usuarios.  
+3. **Descárgalo cuando lo necesites** antes de que sea eliminado.  
+
+## 📄 Licencia
+
+Este proyecto está bajo la licencia MIT. ¡Siéntete libre de contribuir!
+
 <!-- - **Propia nube**: Pronto, nos estamos enfocando en mejorar la experiencia del usuario en ponticloud. StudentCloud aun esta en desarrollo. -->
 
 
