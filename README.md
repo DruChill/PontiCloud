@@ -15,7 +15,7 @@ Sube tus trabajos de la universidad sin necesidad de un correo, más de 100 arch
 
 - **Detalles**: Puedes subir y descargar archivos de trabajo como Rar, Word, Excel, Pdf, JPG, PNG, GIF Etc.
 
-> [!WARNING]
+> [!NOTE]
 > Solo archivos de trabajo y el archivo no debe pesar más de 50MB.
  
 <!-- - **Propia nube**: Pronto, nos estamos enfocando en mejorar la experiencia del usuario en ponticloud. StudentCloud aun esta en desarrollo. -->
