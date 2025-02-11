@@ -129,7 +129,7 @@ const App = () => {
 
             </div>
             <p>
-              {selectedFileName ? <span>Archivo seleccionado: <span className="file-select glowing-text">{selectedFileName}</span></span> : 'Tu archivo aparecerá en la tabla una vez terminado el proceso de carga.'}
+              {selectedFileName ? <span>Archivo seleccionado: <span className="text-accent">{selectedFileName}</span></span> : 'Tu archivo aparecerá en la tabla una vez terminado el proceso de carga.'}
             </p>
           </form>
         </div>
