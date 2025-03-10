@@ -50,7 +50,7 @@ const App = () => {
     e.preventDefault();
     const emailField = e.target.email;
     const email = emailField ? emailField.value : ''; // Verifica si el campo de correo electrónico existe
-    const fileSizeLimit = email ? 100 * 1024 * 1024 : 5 * 1024 * 1024; // 50 MB si hay correo, 5 MB si no logica
+    const fileSizeLimit = email ? 100 * 1024 * 1024 : 50 * 1024 * 1024; // 50 MB si hay correo, 5 MB si no logica
 
     // Check file size
     if (file.size > fileSizeLimit) {
