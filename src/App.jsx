@@ -50,7 +50,7 @@ const App = () => {
     e.preventDefault();
     const emailField = e.target.email;
     const email = emailField ? emailField.value : ''; // Verifica si el campo de correo electrónico existe
-    const fileSizeLimit = email ? 100 * 1024 * 1024 : 50 * 1024 * 1024; // 50 MB si hay correo, 5 MB si no logica
+    const fileSizeLimit = email ? 100 * 1024 * 1024 : 50 * 1024 * 1024; // 100 MB si hay correo, 50 MB si no logica
 
     // Check file size
     if (file.size > fileSizeLimit) {
@@ -166,7 +166,7 @@ const App = () => {
               </tbody>
             </table>
           </div>
-          <div className="flex justify-center mt-4">
+          <div className="flex justify-center lg:mt-0 mt-4 gap-2">
             {Array.from({ length: Math.ceil(filteredFiles.length / rowsPerPage) }, (_, index) => (
               <input
                 key={index + 1}
