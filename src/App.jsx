@@ -120,7 +120,7 @@ const App = () => {
             </div> */}
             
             <div className='mb-4'>
-              <label htmlFor="fileUpload" className="btn btn-active btn-primary me-4">
+              <label htmlFor="fileUpload" className="btn btn-neutral me-2">
                 Selecciona un archivo<i className="bi bi-collection"></i>
                 <input
                   id="fileUpload"
@@ -139,7 +139,7 @@ const App = () => {
               >
                 Subir Archivo <i className="bi bi-cloud-upload"></i>
               </button>
-
+              <p className='text-xs mt-1'>También puedes arrastrar tu archivo!</p>
             </div>
             <p>
               {selectedFileName ? <span>Archivo seleccionado: <span className="text-accent">{selectedFileName}</span></span> : 'Tu archivo aparecerá en la tabla una vez terminado el proceso de carga.'}
