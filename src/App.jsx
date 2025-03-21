@@ -16,7 +16,8 @@ const App = () => {
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [userEmail, setUserEmail] = useState('');
-  const rowsPerPage = 10;
+  const [isDragging, setIsDragging] = useState(false);
+  const rowsPerPage = 9;
 
   useEffect(() => {
     const unsubscribe = onSnapshot(
@@ -31,6 +32,7 @@ const App = () => {
 
   const handleDrop = (event) => {
     event.preventDefault();
+    setIsDragging(false);
     const droppedFile = event.dataTransfer.files[0];
     setFile(droppedFile);
     setSelectedFileName(droppedFile.name);
@@ -38,6 +40,11 @@ const App = () => {
 
   const handleDragOver = (event) => {
     event.preventDefault();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = () => {
+    setIsDragging(false);
   };
 
   const handleFileSelect = (event) => {
@@ -77,9 +84,16 @@ const App = () => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <div className='hero__container' onDrop={handleDrop} 
-    onDragOver={handleDragOver} 
-    style={{ width: '100vw', height: '100vh'}}>
+    <div
+      className={`hero__container ${
+        isDragging ? 'border-4 border-dashed border-blue-500' : ''
+      }`}
+      onDrop={handleDrop}
+      onDragOver={handleDragOver}
+      onDragLeave={handleDragLeave}
+      style={{ width: '100vw', height: '100vh' }}
+    >
+      
       <Header />
       <main className="lg:p-0 p-3 grid grid-cols-1 lg:grid-cols-2 items-center text-base-content gap-4 lg:container mx-auto">
         <div>
@@ -107,7 +121,7 @@ const App = () => {
             
             <div className='mb-4'>
               <label htmlFor="fileUpload" className="btn btn-active btn-primary me-4">
-                Selecciona un archivo o arrástralo aquí<i className="bi bi-collection"></i>
+                Selecciona un archivo<i className="bi bi-collection"></i>
                 <input
                   id="fileUpload"
                   type="file"
@@ -118,7 +132,6 @@ const App = () => {
                   }}
                 />
               </label>
-
               <button
                 className={`${!selectedFileName ? 'btn lg:mt-0 mt-1' : 'btn btn-active btn-secondary'}`}
                 type="submit"
