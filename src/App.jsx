@@ -6,6 +6,7 @@ import 'nprogress/nprogress.css';
 import './App.css';
 import Header from './assets/Components/Header';
 import Footer from './assets/Components/Footer';
+import Plataformas from './assets/Components/Plataformas';
 
 import ReusableSection from './assets/Components/ReusableSection';
 
@@ -100,7 +101,7 @@ const App = () => {
           <ReusableSection
             title="Ponti"
             highlight="Cloud"
-            paragraph="Este proyecto está bajo investigación y desarrollo activo. Habrá fallas aquí y allá, pero en general funciona sin problemas. Recuerda solo subir material de trabajo, como archivos Pdf, Word, Excel etc.."
+            paragraph="Este proyecto está bajo investigación y desarrollo activo. Recuerda solo subir material de trabajo, como archivos Pdf, Word, Excel, etc."
           />
           <form onSubmit={handleSubmit}>
             {/* <div className='flex items-center mb-2'>
@@ -145,6 +146,7 @@ const App = () => {
               {selectedFileName ? <span>Archivo seleccionado: <span className="text-accent">{selectedFileName}</span></span> : 'Tu archivo aparecerá en la tabla una vez terminado el proceso de carga.'}
             </p>
           </form>
+          <Plataformas />
         </div>
         <div className='grid grid-cols-1 lg:gap-4 gap-0 items-center'>
           <div className="overflow-x-auto">
