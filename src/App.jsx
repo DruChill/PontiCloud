@@ -87,7 +87,7 @@ const App = () => {
   return (
     <div
       className={`hero__container ${
-        isDragging ? 'border-4 border-dashed border-blue-500' : ''
+        isDragging ? 'border-4 border-dashed border-primary' : ''
       }`}
       onDrop={handleDrop}
       onDragOver={handleDragOver}
@@ -143,7 +143,7 @@ const App = () => {
               <p className='text-xs mt-1'>También puedes arrastrar tu archivo!</p>
             </div>
             <p>
-              {selectedFileName ? <span>Archivo seleccionado: <span className="text-accent">{selectedFileName}</span></span> : 'Tu archivo aparecerá en la tabla una vez terminado el proceso de carga.'}
+              {selectedFileName ? <span>Archivo seleccionado: <span className="text-accent animate-pulse">{selectedFileName}</span></span> : 'Tu archivo aparecerá en la tabla una vez terminado el proceso de carga.'}
             </p>
           </form>
           <Plataformas />
