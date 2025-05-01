@@ -5,6 +5,10 @@ import ThemeSelector from './ThemeSelector';
 function Header() {
   const location = useLocation();
 
+  const getLinkClass = (path) => {
+    return location.pathname === path ? 'bg-base-100' : '';
+  };
+
   return (
     <header className='font-semibold text-base-content py-5 items-center bg-base-200'>
       <div className="flex justify-between items-center lg:container mx-auto">
@@ -41,23 +45,25 @@ function Header() {
               </li>
             </ul>
           </div>
-          <a className="text-xl" href='/'>PontiCloud</a>
+          <div className="tooltip tooltip-bottom" data-tip="Beta">
+            <a className="text-xl" href='https://ponticloud--pontibeta-3s6kb729.web.app' target='_blank'>PontiCloud</a>
+          </div>
         </div>
 
 
         <div className="hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <a href="/">Inicio</a>
+              <a href="/" className={getLinkClass('/')} >Inicio</a>
             </li>
             {/* <li>
               <a href="/mis-archivos">Mis Archivos</a>
             </li> */}
             <li>
-              <a href="/yape">Donar</a>
+              <a href="/yape" className={getLinkClass('/yape')}>Donar</a>
             </li>
             <li>
-              <a href="/contacto">Contacto</a>
+              <a href="/contacto" className={getLinkClass('/contacto')}>Contacto</a>
             </li>
           </ul>
         </div>
