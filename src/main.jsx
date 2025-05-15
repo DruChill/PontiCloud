@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import NotFound from './assets/Pages/NotFound.jsx';
 import App from './App.jsx';
 import Contact from './assets/Pages/Contact.jsx'; // Asegúrate de crear este componente
 import Search from './assets/Pages/Search.jsx';
@@ -17,6 +18,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/contacto" element={<Contact />} />
         <Route path="/mis-archivos" element={<Search />} />
         <Route path="/sponsor" element={<Sponsor />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   </React.StrictMode>
