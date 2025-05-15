@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import App from './App.jsx';
 import Contact from './assets/Pages/Contact.jsx'; // Asegúrate de crear este componente
 import Search from './assets/Pages/Search.jsx';
-import Yape from './assets/Pages/Yape.jsx';
+import Sponsor from './assets/Pages/Sponsor.jsx';
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -16,7 +16,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/" element={<App />} />
         <Route path="/contacto" element={<Contact />} />
         <Route path="/mis-archivos" element={<Search />} />
-        <Route path="/yape" element={<Yape />} />
+        <Route path="/sponsor" element={<Sponsor />} />
       </Routes>
     </Router>
   </React.StrictMode>

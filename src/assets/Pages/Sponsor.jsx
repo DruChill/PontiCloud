@@ -5,7 +5,7 @@ import ReusableSection from '../Components/ReusableSection'
 import { onSnapshot, collection, query, orderBy, doc, updateDoc, increment, getDoc } from "firebase/firestore";
 import { db, uploadFile } from '../../firebase';
 
-function Yape() {
+function Sponsor() {
 
   const [loading, setLoading] = useState(true);
   const [visitCounter, setVisitCounter] = useState(0);
@@ -151,4 +151,4 @@ function Yape() {
   )
 }
 
-export default Yape
+export default Sponsor;

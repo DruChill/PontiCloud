@@ -38,7 +38,7 @@ function Header() {
                 <a href="/mis-archivos">Mis Archivos</a>
               </li> */}
               <li>
-                <a href="/yape">Donar</a>
+                <a href="/sponsor">Donar</a>
               </li>
               <li>
                 <a href="/contacto">Contacto</a>
@@ -60,7 +60,7 @@ function Header() {
               <a href="/mis-archivos">Mis Archivos</a>
             </li> */}
             <li>
-              <a href="/yape" className={getLinkClass('/yape')}>Donar</a>
+              <a href="/sponsor" className={getLinkClass('/sponsor')}>Donar</a>
             </li>
             <li>
               <a href="/contacto" className={getLinkClass('/contacto')}>Contacto</a>
