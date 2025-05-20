@@ -46,7 +46,7 @@ function Header() {
             </ul>
           </div>
           <div className="tooltip tooltip-bottom" data-tip="Beta">
-            <a className="text-xl" href='https://ponticloud--pontibeta-3s6kb729.web.app' target='_blank'>PontiCloud</a>
+            <a className="text-xl" href='https://ponticloud--preview-name-srne16ya.web.app' target='_blank'>PontiCloud</a>
           </div>
         </div>
 
