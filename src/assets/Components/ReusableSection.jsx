@@ -1,5 +1,3 @@
-import React from 'react';
-
 const ReusableSection = ({ title, highlight, paragraph }) => {
   return (
     <div>
