@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import { onSnapshot, collection, query, orderBy, doc, updateDoc, increment, getDoc } from "firebase/firestore";
 import { db, uploadFile } from './firebase';
-import NProgress from 'nprogress';
-import 'nprogress/nprogress.css';
+
 import './App.css';
 import Header from './assets/Components/Header';
 import Footer from './assets/Components/Footer';
@@ -14,6 +13,9 @@ const App = () => {
   const [file, setFile] = useState(null);
   const [files, setFiles] = useState([]);
   const [selectedFileName, setSelectedFileName] = useState('');
+
+  const [uploadProgress, setUploadProgress] = useState(0);
+
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [userEmail, setUserEmail] = useState('');
@@ -67,13 +69,18 @@ const App = () => {
     }
 
     try {
-      NProgress.start(); // Inicia la barra de progreso
-      await uploadFile(file, email);
-      NProgress.done(); // Finaliza la barra de progreso
+      setUploadProgress(0);
+      await uploadFile(file, email, (progressEvent) => {
+        if (progressEvent && progressEvent.total) {
+          const percent = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+          setUploadProgress(percent);
+        }
+    });
       setSelectedFileName(null);
+      setUploadProgress(0);
     } catch (error) {
-      NProgress.done(); // Finaliza la barra de progreso en caso de error
-      alert(error.message); // Muestra el mensaje de error
+      setUploadProgress(0);
+      alert(error.message);
     }
   };
 
@@ -104,7 +111,7 @@ const App = () => {
             paragraph="Este proyecto está bajo investigación y desarrollo activo. Recuerda solo subir material de trabajo, como archivos Pdf, Word, Excel, etc."
           />
 
-          <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit}>
             <div
               className={`mb-4 border-2 rounded-lg transition-all duration-200 flex flex-col items-center justify-center py-8 cursor-pointer max-w-xl ${
                 isDragging
@@ -115,7 +122,7 @@ const App = () => {
               onDragOver={handleDragOver}
               onDragLeave={handleDragLeave}
               onClick={() => document.getElementById('fileUpload').click()}
-              style={{ minHeight: 120 }}
+              style={{ minHeight: 120, position: 'relative' }}
             >
               <input
                 id="fileUpload"
@@ -139,11 +146,22 @@ const App = () => {
                   Archivo seleccionado: {selectedFileName}
                 </span>
               )}
+              {uploadProgress > 0 && (
+                <div className="w-full absolute bottom-0 left-0">
+                  <div className="h-2 bg-base-300 rounded">
+                    <div
+                      className="h-2 bg-primary rounded transition-all duration-200"
+                      style={{ width: `${uploadProgress}%` }}
+                    ></div>
+                  </div>
+                  <span className="text-xs text-primary font-semibold absolute right-2 bottom-2">{uploadProgress}%</span>
+                </div>
+              )}
             </div>
             <button
               className={`${!selectedFileName ? 'btn lg:mt-0 mt-1' : 'btn btn-active btn-secondary'}`}
               type="submit"
-              disabled={!selectedFileName}
+              disabled={!selectedFileName || uploadProgress > 0}
             >
               Subir Archivo <i className="bi bi-cloud-upload"></i>
             </button>
