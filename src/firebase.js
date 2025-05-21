@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, addDoc, getDocs, query, where } from 'firebase/firestore';
-import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { getStorage, ref, uploadBytes, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { v4 as uuidv4 } from 'uuid';
 
 const firebaseConfig = {
@@ -24,14 +24,14 @@ const isUserApproved = async (userEmail) => {
   return !querySnapshot.empty;
 };
 
-const uploadFile = async (file, userEmail) => {
+const uploadFile = async (file, userEmail, onProgress) => {
   if (userEmail && !(await isUserApproved(userEmail))) {
     throw new Error("Usuario no autorizado para subir archivos.");
   }
 
-  const uuid = uuidv4(); // Genera un nuevo UUID para cada archivo que se va a subir
-  const extension = file.name.split('.').pop(); // Obtiene la extensión del archivo
-  let folderName = userEmail ? userEmail : 'public'; // Define una carpeta por defecto o maneja el error
+  const uuid = uuidv4();
+  const extension = file.name.split('.').pop();
+  let folderName = userEmail ? userEmail : 'public';
 
   if (file.type.includes('pdf')) {
     folderName = 'pdf';
@@ -40,40 +40,47 @@ const uploadFile = async (file, userEmail) => {
   } else if (file.type.includes('image')) {
     folderName = 'images';
   } else {
-    // Define una carpeta por defecto o maneja el error
-    folderName = 'others'; // Por ejemplo, una carpeta para otros tipos de archivos
+    folderName = 'others';
   }
 
-  // Crea una referencia al lugar donde quieres guardar el archivo en Firebase Storage
   const fileRef = ref(storage, `${folderName}/${uuid}.${extension}`);
 
-  try {
-    // Sube el archivo a Firebase Storage
-    const uploadResult = await uploadBytes(fileRef, file);
-    // Obtén la URL del archivo subido
-    const fileURL = await getDownloadURL(uploadResult.ref);
+  return new Promise((resolve, reject) => {
+    const uploadTask = uploadBytesResumable(fileRef, file);
 
-    // Crea un documento en Firestore con los datos del archivo
-    const fileData = {
-      name: file.name,
-      type: file.type,
-      size: file.size,
-      folder: folderName,
-      url: fileURL,
-      uploadedAt: new Date(), // Fecha de subida
-      userEmail: userEmail, // Opcional: Guarda el email del usuario que subió el archivo
-    };
-
-    // Añade el documento a una colección llamada 'files'
-    const docRef = await addDoc(collection(db, "files"), fileData);
-    console.log("Documento escrito con ID: ", docRef.id);
-
-    // Opcional: Retorna el ID del documento o cualquier otro dato relevante
-    return docRef.id;
-  } catch (error) {
-    console.error("Error al subir el archivo o al guardar los datos en Firestore:", error);
-    // Maneja el error adecuadamente
-  }
+    uploadTask.on(
+      'state_changed',
+      (snapshot) => {
+        if (onProgress) {
+          onProgress({
+            loaded: snapshot.bytesTransferred,
+            total: snapshot.totalBytes
+          });
+        }
+      },
+      (error) => {
+        reject(error);
+      },
+      async () => {
+        try {
+          const fileURL = await getDownloadURL(uploadTask.snapshot.ref);
+          const fileData = {
+            name: file.name,
+            type: file.type,
+            size: file.size,
+            folder: folderName,
+            url: fileURL,
+            uploadedAt: new Date(),
+            userEmail: userEmail,
+          };
+          const docRef = await addDoc(collection(db, "files"), fileData);
+          resolve(docRef.id);
+        } catch (error) {
+          reject(error);
+        }
+      }
+    );
+  });
 };
 
 export { db, uploadFile };
