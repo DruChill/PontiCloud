@@ -138,7 +138,7 @@ const App = () => {
                     : 'Arrastra y suelta tu archivo aquí o haz clic para seleccionar'}
                 </span>
                 <span className="text-xs text-base-content/60">
-                  (PDF, Word, Excel, etc.)
+                  (PDF, Word, Excel, etc. | Hasta {userEmail ? '100MB' : '50MB'})
                 </span>
               </div>
               {selectedFileName && (
