@@ -103,49 +103,52 @@ const App = () => {
             highlight="Cloud"
             paragraph="Este proyecto está bajo investigación y desarrollo activo. Recuerda solo subir material de trabajo, como archivos Pdf, Word, Excel, etc."
           />
+
           <form onSubmit={handleSubmit}>
-            {/* <div className='flex items-center mb-2'>
-              <div>
-                <input
-                  className='input input-bordered input-accent w-full max-w-xs'
-                  type="email"
-                  name='email'
-                  placeholder="Ingresa tu correo"
-                  value={userEmail}
-                  onChange={(e) => setUserEmail(e.target.value)}
-                />
+            <div
+              className={`mb-4 border-2 rounded-lg transition-all duration-200 flex flex-col items-center justify-center py-8 cursor-pointer max-w-xl ${
+                isDragging
+                  ? 'border-primary bg-primary/10'
+                  : 'border-dashed border-base-300 hover:border-primary'
+              }`}
+              onDrop={handleDrop}
+              onDragOver={handleDragOver}
+              onDragLeave={handleDragLeave}
+              onClick={() => document.getElementById('fileUpload').click()}
+              style={{ minHeight: 120 }}
+            >
+              <input
+                id="fileUpload"
+                type="file"
+                style={{ display: 'none' }}
+                onChange={handleFileSelect}
+              />
+              <div className="flex flex-col items-center gap-2">
+                <i className="bi bi-cloud-arrow-up text-4xl text-primary" />
+                <span className="font-semibold">
+                  {isDragging
+                    ? '¡Suelta el archivo aquí!'
+                    : 'Arrastra y suelta tu archivo aquí o haz clic para seleccionar'}
+                </span>
+                <span className="text-xs text-base-content/60">
+                  (PDF, Word, Excel, etc.)
+                </span>
               </div>
-              <div>
-                <p><i className="ms-1 bi bi-arrow-bar-left"></i> Premium <i className="bi bi-question-circle "></i></p>
-              </div>
-            </div> */}
-            
-            <div className='mb-4'>
-              <label htmlFor="fileUpload" className="btn btn-neutral me-2">
-                Selecciona un archivo<i className="bi bi-collection"></i>
-                <input
-                  id="fileUpload"
-                  type="file"
-                  style={{ display: 'none' }}
-                  onChange={(e) => {
-                    setFile(e.target.files[0]);
-                    setSelectedFileName(e.target.files[0]?.name);
-                  }}
-                />
-              </label>
-              <button
-                className={`${!selectedFileName ? 'btn lg:mt-0 mt-1' : 'btn btn-active btn-secondary'}`}
-                type="submit"
-                disabled={!selectedFileName} // Deshabilita el botón si no se ha seleccionado un archivo
-              >
-                Subir Archivo <i className="bi bi-cloud-upload"></i>
-              </button>
-              <p className='text-xs mt-1'>También puedes arrastrar tu archivo!</p>
+              {selectedFileName && (
+                <span className="mt-2 text-accent animate-pulse">
+                  Archivo seleccionado: {selectedFileName}
+                </span>
+              )}
             </div>
-            <p>
-              {selectedFileName ? <span>Archivo seleccionado: <span className="text-accent animate-pulse">{selectedFileName}</span></span> : 'Tu archivo aparecerá en la tabla una vez terminado el proceso de carga.'}
-            </p>
+            <button
+              className={`${!selectedFileName ? 'btn lg:mt-0 mt-1' : 'btn btn-active btn-secondary'}`}
+              type="submit"
+              disabled={!selectedFileName}
+            >
+              Subir Archivo <i className="bi bi-cloud-upload"></i>
+            </button>
           </form>
+
           <div role="alert" className="alert alert-warning max-w-xl mt-4">
             <i class="bi bi-exclamation-circle-fill"></i>
             <span className='text-sm'>El 31 de mayo se eliminarán todos los archivos almacenados en la plataforma.
