@@ -146,9 +146,14 @@ const App = () => {
               {selectedFileName ? <span>Archivo seleccionado: <span className="text-accent animate-pulse">{selectedFileName}</span></span> : 'Tu archivo aparecerá en la tabla una vez terminado el proceso de carga.'}
             </p>
           </form>
-          <Plataformas />
+          <div role="alert" className="alert alert-warning max-w-xl mt-4">
+            <i class="bi bi-exclamation-circle-fill"></i>
+            <span className='text-sm'>El 31 de mayo se eliminarán todos los archivos almacenados en la plataforma.
+              Por favor, asegúrate de guardar una copia de tus archivos antes de esa fecha para no perder información importante.</span>
+          </div>
         </div>
-        <div className='grid grid-cols-1 lg:gap-4 gap-0 items-center'>
+        <div className='grid grid-cols-1 lg:gap-3 gap-0 items-center'>
+          
           <div className="overflow-x-auto">
             <table className='table table-compact bg-base-200 shadow'>
               <thead> 
