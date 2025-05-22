@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Header from '../Components/Header'
 import Footer from '../Components/Footer'
 import ReusableSection from '../Components/ReusableSection'
-import { onSnapshot, collection, query, orderBy, doc, updateDoc, increment, getDoc } from "firebase/firestore";
-import { db, uploadFile } from '../../firebase';
+import { doc, updateDoc, increment, getDoc } from "firebase/firestore";
+import { db } from '../../firebase';
 
 function Sponsor() {
 
