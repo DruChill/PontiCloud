@@ -109,9 +109,9 @@ const App = () => {
             paragraph="Este proyecto está bajo investigación y desarrollo activo. Recuerda solo subir material de trabajo, como archivos Pdf, Word, Excel, etc."
           />
 
-                    <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit}>
             <div
-              className={`mb-4 border-2 rounded-lg transition-all duration-200 flex flex-col items-center justify-center py-8 cursor-pointer max-w-xl ${
+              className={`mb-4 border-2 rounded-lg transition-all duration-200 flex flex-col items-center justify-center py-8 lg:px-0 px-5 text-center cursor-pointer max-w-xl ${
                 isDragging
                   ? 'border-primary bg-primary/10'
                   : 'border-dashed border-base-300 hover:border-primary'
@@ -189,7 +189,7 @@ const App = () => {
                   </tr>
                 ) : (
                   currentRows.map((file) => (
-                    <tr key={file.id}>
+                    <tr className='hover:bg-base-300 transition' key={file.id}>
                       <td className='link link-hover truncate max-w-[350px]'>
                         <i className="bi bi-file-earmark-arrow-down"></i> <a target='blank' href={file.url}>{file.name}</a>
                       </td>

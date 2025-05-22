@@ -49,7 +49,7 @@ function ContactForm() {
               </label> */}
             </div>
             <div className="form-control mt-6">
-              <button type='submit' disabled={state.submitting} className="btn btn-primary">Enviar</button>
+              <button type='submit' disabled={state.submitting} className="btn btn-primary">Enviar <i className="bi bi-send"></i></button>
             </div>
           </form>
         </div>
