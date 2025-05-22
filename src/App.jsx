@@ -93,9 +93,7 @@ const App = () => {
 
   return (
     <div
-      className={`hero__container ${
-        isDragging ? 'border-4 border-dashed border-primary' : ''
-      }`}
+      className="hero__container"
       onDrop={handleDrop}
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
@@ -168,7 +166,7 @@ const App = () => {
           </form>
 
           <div role="alert" className="alert alert-warning max-w-xl mt-4">
-            <i class="bi bi-exclamation-circle-fill"></i>
+            <i className="bi bi-exclamation-circle-fill"></i>
             <span className='text-sm'>El 31 de mayo se eliminarán todos los archivos almacenados en la plataforma.
               Por favor, asegúrate de guardar una copia de tus archivos antes de esa fecha para no perder información importante.</span>
           </div>
