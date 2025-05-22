@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const themes = [
   "light", "dark", "cupcake", "bumblebee", "emerald", "corporate",
@@ -28,12 +28,7 @@ const ThemeSelector = () => {
   return (
     <div className="dropdown dropdown-end z-10" id="theme-selector">
       <div tabIndex="0" className="btn gap-1 normal-case btn-ghost" onClick={toggleDropdown}>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
-        <path d="M3 21v-4a4 4 0 1 1 4 4h-4"></path>
-        <path d="M21 3a16 16 0 0 0 -12.8 10.2"></path>
-        <path d="M21 3a16 16 0 0 1 -10.2 12.8"></path>
-        <path d="M10.6 9a9 9 0 0 1 4.4 4.4"></path>
-      </svg>
+        <i className="text-xl bi bi-vector-pen"></i>
         <span className="">Tema</span>
         
         <svg width="12px" height="12px" className="ml-1 h-3 w-3 fill-current opacity-60 sm:inline-block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048">
