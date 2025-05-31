@@ -166,9 +166,10 @@ const App = () => {
           </form>
 
           <div role="alert" className="alert alert-warning max-w-xl mt-4">
-            <i className="bi bi-exclamation-circle-fill"></i>
-            <span className='text-sm'>El 31 de mayo se eliminarán todos los archivos almacenados en la plataforma.
-              Por favor, asegúrate de guardar una copia de tus archivos antes de esa fecha para no perder información importante.</span>
+            <i class="bi bi-info-circle-fill"></i>
+            <span className='text-sm'>Recuerda: los archivos se eliminan automáticamente al final de cada mes. Asegúrate de guardar una copia para no perder información importante.</span>
+            {/* <span className='text-sm'>El 31 de mayo se eliminarán todos los archivos almacenados en la plataforma.
+              Por favor, asegúrate de guardar una copia de tus archivos antes de esa fecha para no perder información importante.</span> */}
           </div>
         </div>
         <div className='grid grid-cols-1 lg:gap-3 gap-0 items-center'>
